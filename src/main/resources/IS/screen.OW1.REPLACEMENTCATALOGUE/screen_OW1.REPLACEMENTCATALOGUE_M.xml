@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE frame SYSTEM "urn:x-abas.de:abasscreens-1.00.dtd">
+
+<frame customHelp="" frameType="M" msgId="replacementcatalogue_ow1$0" stdHelp="25B.1">
+ <layout.grid>
+  <metainfo axis="row" grid="0" stretch="zoom" />
+  <metainfo axis="column" grid="0" stretch="zoom" />
+  <cell alignX="fill" alignY="fill" gridX="0" gridY="0">
+   <layout.split axis="row">
+    <pane.split>
+     <layout.grid>
+      <cell gridX="0" gridY="0">
+       <label msgId="replacementcatalogue_ow1_fhead_vendor" />
+      </cell>
+      <cell gridX="1" gridY="0">
+       <erpfield s3Name="0:vendor" />
+      </cell>
+      <cell gridX="0" gridY="1">
+       <label msgId="replacementcatalogue_ow1_fhead_file" />
+      </cell>
+      <cell alignX="fill" alignY="fill" gridX="1" gridY="1">
+       <erpfield s3Name="0:file" />
+      </cell>
+     </layout.grid>
+    </pane.split>
+    <pane.split>
+     <table>
+      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$1" s3Name="1:import" />
+      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$3" s3Name="1:productno" />
+      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$4" s3Name="1:matchcode" />
+      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$5" s3Name="1:price" />
+     </table>
+    </pane.split>
+   </layout.split>
+  </cell>
+ </layout.grid>
+</frame>
+

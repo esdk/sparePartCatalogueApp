@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE frame SYSTEM "urn:x-abas.de:abasscreens-1.00.dtd">
+
+<frame customHelp="" frameType="T" stdHelp="25B.1">
+ <layout.grid>
+  <metainfo axis="row" grid="0" stretch="zoom" />
+  <metainfo axis="column" grid="0" stretch="zoom" />
+  <cell alignX="fill" alignY="fill" gridX="0" gridY="0">
+   <layout.notebook>
+    <pane.notebook msgId="replacementcatalogue_ow1$2">
+     <layout.grid>
+      <metainfo axis="column" grid="2" indent="large" />
+      <cell gridX="0" gridY="0">
+       <label msgId="replacementcatalogue_ow1_ftable_rowno" />
+      </cell>
+      <cell alignY="beginning" gridX="1" gridY="0">
+       <erpfield access="readOnly" s3Name="1:zn" />
+      </cell>
+      <cell alignY="beginning" gridX="2" gridY="0" />
+      <cell alignY="beginning" gridX="3" gridY="0" />
+      <cell alignY="beginning" gridX="0" gridY="1" />
+      <cell alignY="beginning" gridX="1" gridY="1" />
+      <cell alignY="beginning" gridX="2" gridY="1" />
+      <cell alignY="beginning" gridX="3" gridY="1" />
+      <cell alignY="beginning" gridX="0" gridY="2" />
+      <cell alignY="beginning" gridX="1" gridY="2" />
+      <cell alignY="beginning" gridX="2" gridY="2" />
+      <cell alignY="beginning" gridX="3" gridY="2" />
+      <cell alignY="beginning" gridX="0" gridY="3" />
+      <cell alignY="beginning" gridX="1" gridY="3" />
+      <cell alignY="beginning" gridX="2" gridY="3" />
+      <cell alignY="beginning" gridX="3" gridY="3" />
+      <cell alignY="beginning" gridX="0" gridY="4" />
+      <cell alignY="beginning" gridX="1" gridY="4" />
+      <cell alignY="beginning" gridX="2" gridY="4" />
+      <cell alignY="beginning" gridX="3" gridY="4" />
+      <cell alignY="beginning" gridX="0" gridY="5" />
+      <cell alignY="beginning" gridX="1" gridY="5" />
+      <cell alignY="beginning" gridX="2" gridY="5" />
+      <cell alignY="beginning" gridX="3" gridY="5" />
+      <cell alignY="beginning" gridX="0" gridY="6" />
+      <cell alignY="beginning" gridX="1" gridY="6" />
+      <cell alignY="beginning" gridX="2" gridY="6" />
+      <cell alignY="beginning" gridX="3" gridY="6" />
+      <cell alignY="beginning" gridX="0" gridY="7" />
+      <cell alignY="beginning" gridX="1" gridY="7" />
+      <cell alignY="beginning" gridX="2" gridY="7" />
+      <cell alignY="beginning" gridX="3" gridY="7" />
+      <cell alignY="beginning" gridX="0" gridY="8" />
+      <cell alignY="beginning" gridX="1" gridY="8" />
+      <cell alignY="beginning" gridX="2" gridY="8" />
+      <cell alignY="beginning" gridX="3" gridY="8" />
+      <cell alignY="beginning" gridX="0" gridY="9" />
+      <cell alignY="beginning" gridX="1" gridY="9" />
+      <cell alignY="beginning" gridX="2" gridY="9" />
+      <cell alignY="beginning" gridX="3" gridY="9" />
+      <cell alignY="beginning" gridX="0" gridY="10" />
+      <cell alignY="beginning" gridX="1" gridY="10" />
+      <cell alignY="beginning" gridX="2" gridY="10" />
+      <cell alignY="beginning" gridX="3" gridY="10" />
+      <cell alignY="beginning" gridX="0" gridY="11" />
+      <cell alignY="beginning" gridX="1" gridY="11" />
+      <cell alignY="beginning" gridX="2" gridY="11" />
+      <cell alignY="beginning" gridX="3" gridY="11" />
+      <cell alignY="beginning" gridX="0" gridY="12" />
+      <cell alignY="beginning" gridX="1" gridY="12" />
+      <cell alignY="beginning" gridX="2" gridY="12" />
+      <cell alignY="beginning" gridX="3" gridY="12" />
+      <cell alignY="beginning" gridX="0" gridY="13" />
+      <cell alignY="beginning" gridX="1" gridY="13" />
+      <cell alignY="beginning" gridX="2" gridY="13" />
+      <cell alignY="beginning" gridX="3" gridY="13" />
+      <cell alignY="beginning" gridX="0" gridY="14" />
+      <cell alignY="beginning" gridX="1" gridY="14" />
+      <cell alignY="beginning" gridX="2" gridY="14" />
+      <cell alignY="beginning" gridX="3" gridY="14" />
+      <cell alignY="beginning" gridX="0" gridY="15" />
+      <cell alignY="beginning" gridX="1" gridY="15" />
+      <cell alignY="beginning" gridX="2" gridY="15" />
+      <cell alignY="beginning" gridX="3" gridY="15" />
+      <cell alignY="beginning" gridX="0" gridY="16" />
+      <cell alignY="beginning" gridX="1" gridY="16" />
+      <cell alignY="beginning" gridX="2" gridY="16" />
+      <cell alignY="beginning" gridX="3" gridY="16" />
+      <cell alignY="beginning" gridX="0" gridY="17" />
+      <cell alignY="beginning" gridX="1" gridY="17" />
+      <cell alignY="beginning" gridX="2" gridY="17" />
+      <cell alignY="beginning" gridX="3" gridY="17" />
+      <cell alignY="beginning" gridX="0" gridY="18" />
+      <cell alignY="beginning" gridX="1" gridY="18" />
+      <cell alignY="beginning" gridX="2" gridY="18" />
+      <cell alignY="beginning" gridX="3" gridY="18" />
+      <cell alignY="beginning" gridX="0" gridY="19" />
+      <cell alignY="beginning" gridX="1" gridY="19" />
+      <cell alignY="beginning" gridX="2" gridY="19" />
+      <cell alignY="beginning" gridX="3" gridY="19" />
+     </layout.grid>
+    </pane.notebook>
+   </layout.notebook>
+  </cell>
+ </layout.grid>
+</frame>
+

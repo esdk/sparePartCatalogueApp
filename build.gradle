@@ -1,0 +1,83 @@
+buildscript {
+    def baseUrl = System.properties.getProperty("de.abas.build.repositories.baseUrl","http://maven.abasag.intra:9999/nexus/content/repositories")
+    repositories {
+        mavenLocal()
+        maven { url "$baseUrl/central" }
+        maven { url "$baseUrl/abas.releases" }
+        maven { url "$baseUrl/abas.snapshots" }
+    }
+    dependencies{
+        classpath 'de.abas.made:gradlePlugin:0.4.1'
+    }
+}
+
+plugins {
+    id "java"
+    id "eclipse"
+}
+apply plugin: 'made-plugin'
+apply from: file("gradle/integrationTest.gradle")
+
+def baseUrl = System.properties.getProperty("de.abas.build.repositories.baseUrl","http://maven.abasag.intra:9999/nexus/content/repositories")
+repositories {
+    mavenLocal()
+    maven { url "${baseUrl}/central/" }
+    maven { url "${baseUrl}/releases/" }
+    maven { url "$baseUrl/abas.releases" }
+    maven { url "$baseUrl/abas.snapshots" }
+    maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/content/repositories/"+NEXUS_NAME }
+}
+
+made {
+    app {
+        name="sparePartsCatalogueApp"
+        entryPoints = [
+        "java:de.abas.custom.spareParts.catalogue.Main"
+        ]
+        shared=true
+        infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
+        tables = ["Replacement"]
+    }
+
+    abas {
+        homeDir = ABAS_HOMEDIR
+        clientDir = ABAS_CLIENTDIR
+        clientId = ABAS_CLIENTID
+        edpHost = EDP_HOST
+        edpPort = EDP_PORT.toInteger()
+        edpUser = EDP_USER
+        edpPassword = EDP_PASSWORD
+    }
+
+    nexus {
+        nexusHost = NEXUS_HOST
+        nexusPort = NEXUS_PORT.toInteger()
+        nexusRepoName = NEXUS_NAME
+        nexusPassword = NEXUS_PASSWORD
+    }
+
+    ssh {
+        host = SSH_HOST
+        port = SSH_PORT.toInteger()
+        user = SSH_USER
+        password = SSH_PASSWORD
+        key = SSH_KEY
+    }
+    installType = "SSH"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+configurations { compile.extendsFrom provided }
+
+dependencies {
+    provided 'de.abas.homedir:log4j:1.0.0'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}
