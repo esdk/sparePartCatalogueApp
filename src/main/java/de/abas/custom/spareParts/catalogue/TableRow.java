@@ -22,6 +22,7 @@ public class TableRow {
 
 	private void fill() {
 		row.setProductno(sparePart.getProductNo());
+		row.setDescr(sparePart.getDescription());
 		row.setMatchcode(sparePart.getMatchCode());
 		row.setPrice(sparePart.getPrice());
 	}

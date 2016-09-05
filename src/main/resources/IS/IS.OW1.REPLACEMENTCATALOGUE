@@ -2,7 +2,7 @@ V#21
 K#n#REPLACEMENTCATALOGUE#Import Replacement Catalogues#A#isrein/screen.OW1.REPLACEMENTCATALOGUE#25B.1##
 K#(0)#(0)#100046##n#n#ReplacementCatalogue#y
 K#n#(1)#
-K######
+K#java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp#####
 K#######
 K#ow1#(25)#25:0#(116)#(98)###0#0#
 K#########
@@ -65,10 +65,12 @@ Z#0#isisref##n####(0)######n#0#n#0##n##
 Z#0#isselect##n####(1)######n#0#n#0##n##
 Z#0#isauswahl##n####(1)######n#0#n#0##n##
 Z#0#isstufe##n####(1)######n#0#n#0##n##
-Z#0#isbstart##n####(0)##java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp####n#0#n#0##n##
+Z#0#isbstart##n####(1)##java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp####n#0#n#0##n##
 Z#0#isstartzeit##n####(0)######n#0#n#0##n##
 Z#1#isvendor#PS1:1#n#Vendor#A#A#(2)######n#1#n#0##n##
-Z#1#isfile#GL100#n#Path to file#A#A#(2)######n#1#n#0##n##
+Z#1#isfile#GL100#n#Path to file#A#A#(2)#####java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp#n#1#n#0##n##
+Z#1#isstartimport#BU3#n#Start import#A#A#(1)######n#1#n#0##n##
+Z#1#isformat#GL5#n#File format#A#A#(2)######n#1#n#0##n##
 Z#0#ittabnr##y####(0)######n#0#n#0##n##
 Z#0#itzid##y####(0)######n#0#n#0##n##
 Z#0#itzn##y####(0)######n#0#n#0##n##
@@ -92,3 +94,4 @@ Z#2#isimport#B#y#Import?#A#A#(0)######n#1#n#0##n##
 Z#2#isproductno#GL30#y#Product no vendor#A#A#(0)######n#1#n#0##n##
 Z#2#ismatchcode#GL30#y#Product matchcode#A#A#(0)######n#1#n#0##n##
 Z#2#isprice#R6.2#y#Price#A#A#(0)######n#1#n#0##n##
+Z#2#isdescr#GL30#y#Description#A#A#(0)######n#1#n#0##n##

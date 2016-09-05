@@ -3,6 +3,8 @@
 
 <popups>
  <popup id="menuTable" />
- <popup id="menuExecute" />
+ <popup id="menuExecute">
+  <menuitem msgId="replacementcatalogue_ow1$7" s3Name="0:startimport" />
+ </popup>
 </popups>
 

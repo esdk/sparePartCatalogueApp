@@ -9,6 +9,7 @@
    <layout.split axis="row">
     <pane.split>
      <layout.grid>
+      <metainfo axis="row" grid="3" indent="large" />
       <cell gridX="0" gridY="0">
        <label msgId="replacementcatalogue_ow1_fhead_vendor" />
       </cell>
@@ -18,17 +19,28 @@
       <cell gridX="0" gridY="1">
        <label msgId="replacementcatalogue_ow1_fhead_file" />
       </cell>
-      <cell alignX="fill" alignY="fill" gridX="1" gridY="1">
+      <cell gridX="1" gridY="1">
        <erpfield s3Name="0:file" />
       </cell>
+      <cell gridX="0" gridY="2">
+       <label msgId="replacementcatalogue_ow1_fhead_format" />
+      </cell>
+      <cell gridX="1" gridY="2">
+       <erpfield s3Name="0:format" />
+      </cell>
+      <cell gridX="0" gridY="3">
+       <erpfield dimX="0" msgId="replacementcatalogue_ow1_fhead_startimport" s3Name="0:startimport" />
+      </cell>
+      <cell alignX="fill" alignY="fill" gridX="1" gridY="3" />
      </layout.grid>
     </pane.split>
     <pane.split>
      <table>
-      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$1" s3Name="1:import" />
-      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$3" s3Name="1:productno" />
-      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$4" s3Name="1:matchcode" />
-      <erpfield access="readOnly" msgId="replacementcatalogue_ow1$5" s3Name="1:price" />
+      <erpfield dimX="0" msgId="replacementcatalogue_ow1$1" s3Name="1:import" />
+      <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$3" s3Name="1:productno" />
+      <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$6" s3Name="1:descr" />
+      <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$4" s3Name="1:matchcode" />
+      <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$5" s3Name="1:price" />
      </table>
     </pane.split>
    </layout.split>
