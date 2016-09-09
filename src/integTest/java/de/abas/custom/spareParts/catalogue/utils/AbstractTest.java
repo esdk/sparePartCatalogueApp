@@ -34,7 +34,9 @@ public class AbstractTest {
 
 	@After
 	public void cleanup() {
-		infosys.abort();
+		if (infosys.active()) {
+			infosys.abort();
+		}
 		ctx.close();
 	}
 
