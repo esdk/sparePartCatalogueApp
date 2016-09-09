@@ -9,37 +9,42 @@
    <layout.notebook>
     <pane.notebook msgId="replacementcatalogue_ow1$2">
      <layout.grid>
-      <metainfo axis="column" grid="2" indent="large" />
+      <metainfo axis="column" grid="3" indent="large" />
       <cell alignX="fill" alignY="fill" gridX="0" gridY="0">
        <label msgId="replacementcatalogue_ow1_ftable_import" />
       </cell>
-      <cell alignY="beginning" gridX="1" gridY="0" />
-      <cell alignY="beginning" gridX="2" gridY="0" />
-      <cell alignY="beginning" gridX="3" gridY="0" />
+      <cell alignX="fill" alignY="fill" gridX="1" gridY="0">
+       <erpfield msgId="replacementcatalogue_ow1_ftable_import" s3Name="1:import" />
+      </cell>
+      <cell gridX="2" gridY="0">
+       <erpfield access="readOnly" dimX="1" s3Name="1:transfericon" />
+      </cell>
+      <cell alignY="beginning" gridX="3" gridY="0">
+       <label msgId="replacementcatalogue_ow1_ftable_matchcode" />
+      </cell>
+      <cell alignX="fill" alignY="fill" gridX="4" gridY="0">
+       <erpfield access="readOnly" s3Name="1:matchcode" />
+      </cell>
       <cell gridX="0" gridY="1">
        <label msgId="replacementcatalogue_ow1_ftable_productno" />
       </cell>
-      <cell alignX="fill" alignY="fill" gridX="1" gridY="1">
+      <cell gridX="1" gridY="1" sizeX="2">
        <erpfield access="readOnly" s3Name="1:productno" />
       </cell>
-      <cell gridX="2" gridY="1">
+      <cell gridX="3" gridY="1">
        <label msgId="replacementcatalogue_ow1_ftable_descr" />
       </cell>
-      <cell alignX="fill" alignY="fill" gridX="3" gridY="1">
+      <cell alignX="fill" alignY="fill" gridX="4" gridY="1">
        <erpfield access="readOnly" s3Name="1:descr" />
       </cell>
       <cell gridX="0" gridY="2">
        <label msgId="replacementcatalogue_ow1_ftable_price" />
       </cell>
-      <cell alignX="fill" alignY="fill" gridX="1" gridY="2">
+      <cell gridX="1" gridY="2" sizeX="2">
        <erpfield access="readOnly" s3Name="1:price" />
       </cell>
-      <cell gridX="2" gridY="2">
-       <label msgId="replacementcatalogue_ow1_ftable_matchcode" />
-      </cell>
-      <cell alignX="fill" alignY="fill" gridX="3" gridY="2">
-       <erpfield access="readOnly" s3Name="1:matchcode" />
-      </cell>
+      <cell gridX="3" gridY="2" />
+      <cell alignX="fill" alignY="fill" gridX="4" gridY="2" />
      </layout.grid>
     </pane.notebook>
    </layout.notebook>

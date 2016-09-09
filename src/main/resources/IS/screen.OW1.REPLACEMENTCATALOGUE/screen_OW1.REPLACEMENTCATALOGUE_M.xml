@@ -37,6 +37,7 @@
     <pane.split>
      <table>
       <erpfield dimX="0" msgId="replacementcatalogue_ow1$1" s3Name="1:import" />
+      <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$8" s3Name="1:transfericon" />
       <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$3" s3Name="1:productno" />
       <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$6" s3Name="1:descr" />
       <erpfield access="readOnly" dimX="0" msgId="replacementcatalogue_ow1$4" s3Name="1:matchcode" />
