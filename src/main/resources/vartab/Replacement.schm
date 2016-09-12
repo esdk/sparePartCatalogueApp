@@ -1,0 +1,90 @@
+database Replacement {
+	number 25
+	classname Replacement
+	structure SparePart {
+		head {
+			field "PS1:1" yvendor {
+				label ""
+				heading ""
+				description Vendor
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GL30 yproductno {
+				label ""
+				heading ""
+				description "Product no vendor"
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GL30 ymatchcode {
+				label ""
+				heading ""
+				description "Matchcode of product"
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GL40 ydescr {
+				label ""
+				heading ""
+				description Description
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field "R6.2" yprice {
+				label ""
+				heading ""
+				description Price
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GL30 ysigned {
+				label ""
+				heading ""
+				description Signature
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GD19 ydate {
+				label ""
+				heading ""
+				description Date
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field B ytransferred {
+				label ""
+				heading ""
+				description Transferred
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+			field GD19 ychanged {
+				label ""
+				heading ""
+				description "Last changed"
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+		}
+		table {
+			field "P2:1" ycorrproduct {
+				label ""
+				heading ""
+				description "Corresponding product"
+				screen EDITABLE
+				showPriority A
+				changePriority A
+			}
+		}
+	}
+}
