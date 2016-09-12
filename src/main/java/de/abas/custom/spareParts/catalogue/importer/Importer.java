@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
 
 public interface Importer {
@@ -21,18 +22,18 @@ public interface Importer {
 	default List<SparePart> readFile(File file) throws EventException {
 		final ArrayList<SparePart> spareParts = new ArrayList<SparePart>();
 		try (BufferedReader r = new BufferedReader(new FileReader(file))) {
-			logger.info(String.format("Reading from file '%s' ...", file.getName()));
+			logger.info(Util.getMessage("importer.log.read.file", file.getName()));
 			String line = "";
 			while ((line = r.readLine()) != null) {
-				logger.info(String.format("line: '%s'", line));
+				logger.info(Util.getMessage("importer.log.line", line));
 				spareParts.add(parseData(line));
 			}
 		} catch (final FileNotFoundException e) {
 			logger.error(e.getMessage(), e.getCause());
-			throw new EventException(String.format("File \"%s\" not found", file.getName()), 1);
+			throw new EventException(Util.getMessage("importer.err.no.file", file.getName()), 1);
 		} catch (final IOException e) {
 			logger.error(e.getMessage(), e.getCause());
-			throw new EventException(String.format("Could not read from file \"%s\"", file.getName()), 1);
+			throw new EventException(Util.getMessage("importer.err.reading", file.getName()), 1);
 		}
 		return spareParts;
 	}

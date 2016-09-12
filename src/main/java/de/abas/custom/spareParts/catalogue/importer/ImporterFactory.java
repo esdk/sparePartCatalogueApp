@@ -1,5 +1,6 @@
 package de.abas.custom.spareParts.catalogue.importer;
 
+import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
 
 public class ImporterFactory {
@@ -28,8 +29,9 @@ public class ImporterFactory {
 		for (final Format fileFormat : Format.values()) {
 			fileFormats = fileFormat + ", ";
 		}
-		throw new EventException(String.format("Invalid file format.\nOnly the following formats are permitted:\n%s",
-				fileFormats.substring(0, fileFormats.length() - 2)), 1);
+		throw new EventException(
+				Util.getMessage("importerfactory.err.file.format", fileFormats.substring(0, fileFormats.length() - 2)),
+				1);
 	}
 
 }

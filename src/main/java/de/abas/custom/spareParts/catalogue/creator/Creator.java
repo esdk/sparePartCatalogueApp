@@ -2,6 +2,7 @@ package de.abas.custom.spareParts.catalogue.creator;
 
 import org.apache.log4j.Logger;
 
+import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.db.DbContext;
 import de.abas.erp.db.infosystem.custom.ow1.ReplacementCatalogue;
 import de.abas.erp.db.schema.vendor.Vendor;
@@ -22,11 +23,11 @@ public abstract class Creator {
 	ReplacementCatalogue infosys;
 
 	public void make() {
-		logger.info("importing data into SpareParts ...");
+		logger.info(Util.getMessage("creator.log.start.import"));
 		final Iterable<ReplacementCatalogue.Row> rows = infosys.table().getRows();
 		for (final ReplacementCatalogue.Row row : rows) {
 			if (row.getImport()) {
-				logger.info(String.format("importing line %d of infosystem", row.getRowNo()));
+				logger.info(String.format(Util.getMessage("creator.log.import.line", row.getRowNo())));
 				if (exists(infosys.getVendor(), row.getMatchcode())) {
 					if (update(row)) {
 						row.setTransfericon(ICON_UPDATE);
@@ -42,7 +43,7 @@ public abstract class Creator {
 				}
 			}
 		}
-		logger.info("data import completed");
+		logger.info("creator.log.import.complete");
 	}
 
 	protected abstract boolean create(ReplacementCatalogue.Row row);

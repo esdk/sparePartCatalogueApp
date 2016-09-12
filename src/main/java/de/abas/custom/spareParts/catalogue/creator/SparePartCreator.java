@@ -2,6 +2,7 @@ package de.abas.custom.spareParts.catalogue.creator;
 
 import org.apache.log4j.Logger;
 
+import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.common.type.AbasDate;
 import de.abas.erp.db.DbContext;
 import de.abas.erp.db.EditorAction;
@@ -29,7 +30,7 @@ public class SparePartCreator extends Creator {
 
 	@Override
 	public boolean create(ReplacementCatalogue.Row row) {
-		logger.info("creating new SparePart");
+		logger.info(Util.getMessage("sparepartcreator.log.start.creation"));
 		try {
 			final SparePartEditor editor = ctx.newObject(SparePartEditor.class);
 			editor.setSwd("SPARE" + infosys.getVendor().getIdno());
@@ -43,10 +44,10 @@ public class SparePartCreator extends Creator {
 			editor.setYsigned(BufferFactory.newInstance(true).getGlobalTextBuffer().getStringValue("operatorCode"));
 			editor.setYtransferred(true);
 			editor.commit();
-			logger.info(String.format("SparePart %s created", editor.objectId().getIdno()));
+			logger.info(Util.getMessage("sparepartcreator.log.created", editor.objectId().getIdno()));
 			return true;
 		} catch (final DBRuntimeException e) {
-			logger.error("Error while creating new SparePart object: " + e.getMessage());
+			logger.error(Util.getMessage("sparepartcreator.log.err.creation", e.getMessage()));
 			return false;
 		}
 	}
@@ -73,7 +74,7 @@ public class SparePartCreator extends Creator {
 
 	@Override
 	protected boolean update(ReplacementCatalogue.Row row) {
-		logger.info("updating existing SparePart");
+		logger.info(Util.getMessage("sparepartcreator.log.start.updating"));
 		SparePartEditor editor = null;
 		try {
 			editor = getSparePart().createEditor().open(EditorAction.UPDATE);
@@ -84,11 +85,11 @@ public class SparePartCreator extends Creator {
 			editor.setYsigned(BufferFactory.newInstance(true).getGlobalTextBuffer().getStringValue("operatorCode"));
 			editor.setYtransferred(true);
 			editor.commit();
-			logger.info(String.format("SparePart %s updated", getSparePart().getIdno()));
+			logger.info(Util.getMessage("sparepartcreator.log.updated", getSparePart().getIdno()));
 			return true;
 		} catch (final CommandException e) {
 			logger.error(
-					String.format("Error while updating SparePart %s: %s", getSparePart().getIdno(), e.getMessage()));
+					Util.getMessage("sparepartcreator.log.err.updating", getSparePart().getIdno(), e.getMessage()));
 			return false;
 		}
 	}

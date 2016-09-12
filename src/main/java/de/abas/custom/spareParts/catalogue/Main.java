@@ -7,6 +7,7 @@ import de.abas.custom.spareParts.catalogue.creator.Creator;
 import de.abas.custom.spareParts.catalogue.importer.Importer;
 import de.abas.custom.spareParts.catalogue.importer.ImporterFactory;
 import de.abas.custom.spareParts.catalogue.importer.SparePart;
+import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
 import de.abas.erp.axi.screen.ScreenControl;
 import de.abas.erp.axi2.EventHandlerRunner;
@@ -28,6 +29,8 @@ import de.abas.erp.jfop.rt.api.annotation.RunFopWith;
 @EventHandler(head = ReplacementCatalogue.class, row = ReplacementCatalogue.Row.class)
 @RunFopWith(EventHandlerRunner.class)
 public class Main {
+
+	// TODO extract text to resource file
 
 	@FieldEventHandler(field = "file", type = FieldEventType.EXIT)
 	public void fileExit(ReplacementCatalogue infosys) {
@@ -55,9 +58,9 @@ public class Main {
 	public void startimportAfter(DbContext ctx, ReplacementCatalogue infosys, ScreenControl screenControl)
 			throws EventException {
 		checkFieldEmpty(infosys, screenControl, ReplacementCatalogue.META.vendor,
-				"Please specifiy vendor of the replacement catalogue");
+				Util.getMessage("main.err.no.vendor"));
 		if (infosys.table().getRowCount() == 0) {
-			throw new EventException("Please specify which table lines to import", 1);
+			throw new EventException(Util.getMessage("main.err.no.table"), 1);
 		}
 		Creator.newInstance(ctx, infosys).make();
 	}
@@ -79,10 +82,9 @@ public class Main {
 
 	private void preconditions(ReplacementCatalogue infosys, ScreenControl screenControl) throws EventException {
 		infosys.table().clear();
-		checkFieldEmpty(infosys, screenControl, ReplacementCatalogue.META.file,
-				"Please enter the import file location");
+		checkFieldEmpty(infosys, screenControl, ReplacementCatalogue.META.file, Util.getMessage("main.err.no.file"));
 		checkFieldEmpty(infosys, screenControl, ReplacementCatalogue.META.format,
-				"Please enter the import file format");
+				Util.getMessage("main.err.no.format"));
 	}
 
 }

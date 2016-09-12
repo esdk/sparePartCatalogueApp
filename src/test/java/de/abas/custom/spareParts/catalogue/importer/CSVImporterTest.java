@@ -21,7 +21,8 @@ public class CSVImporterTest {
 			instance.parseData("invalid input");
 			fail("Invalid input: EventException expected.");
 		} catch (final EventException e) {
-			assertThat(e.getMessage(), is("Invalid file format, csv format expected."));
+			assertThat(e.getMessage(), is(
+					"Invalid file format, csv format expected.\nEach line is supposed to have the following format:\nproductNo;description;price[;matchcode]"));
 		}
 	}
 
@@ -31,7 +32,8 @@ public class CSVImporterTest {
 			instance.parseData("1234;Test spare product;invalid price;");
 			fail("Invalid price: EventException expected");
 		} catch (final EventException e) {
-			assertThat(e.getMessage(), is("Invalid price, could not convert invalid price to number value."));
+			assertThat(e.getMessage(), is(
+					"Invalid price, could not convert \"invalid price\" to number value.\nPlease note, the decimal separator for price must be \".\"!"));
 		}
 
 	}
@@ -63,7 +65,7 @@ public class CSVImporterTest {
 			instance.readFile(new File("notExisting"));
 			fail("Not existing file: EventException expected");
 		} catch (final EventException e) {
-			assertThat(e.getMessage(), is("File notExisting not found"));
+			assertThat(e.getMessage(), is("File \"notExisting\" not found"));
 		}
 	}
 
