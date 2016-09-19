@@ -7,7 +7,7 @@ buildscript {
         maven { url "$baseUrl/abas.snapshots" }
     }
     dependencies{
-        classpath 'de.abas.made:gradlePlugin:0.4.1'
+        classpath 'de.abas.made:gradlePlugin:0.4.2-SNAPSHOT'
     }
 }
 
