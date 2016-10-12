@@ -6,7 +6,7 @@ services:
     # ssh in den Container:   ssh localhost -l s3 -p 2205 -i docker_erp.key
     #
     erp-bpmn:
-      image: registry.service.abas/abas/neumand1_erp:latest:latest
+      image: abas/pi-erp:latest
       container_name: "essentials_erp"
 
       ports:

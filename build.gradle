@@ -1,13 +1,24 @@
 buildscript {
-    def baseUrl = System.properties.getProperty("de.abas.build.repositories.baseUrl","http://maven.abasag.intra:9999/nexus/content/repositories")
     repositories {
         mavenLocal()
-        maven { url "$baseUrl/central" }
-        maven { url "$baseUrl/abas.releases" }
-        maven { url "$baseUrl/abas.snapshots" }
+	mavenCentral()
+        maven { 
+		credentials {
+			username mavenUser
+			password mavenPassword
+		}
+		url mavenReleaseURL
+	}
+	maven {
+		credentials {
+			username mavenUser
+			password mavenPassword
+		}
+		url mavenSnapshotURL
+	}
     }
     dependencies{
-        classpath 'de.abas.made:gradlePlugin:0.4.2-SNAPSHOT'
+        classpath 'de.abas.esdk:gradlePlugin:0.4.4-SNAPSHOT'
     }
 }
 
@@ -16,16 +27,25 @@ plugins {
     id "eclipse"
 }
 apply plugin: 'made-plugin'
-apply from: file("gradle/integrationTest.gradle")
 
-def baseUrl = System.properties.getProperty("de.abas.build.repositories.baseUrl","http://maven.abasag.intra:9999/nexus/content/repositories")
 repositories {
     mavenLocal()
-    maven { url "${baseUrl}/central/" }
-    maven { url "${baseUrl}/releases/" }
-    maven { url "$baseUrl/abas.releases" }
-    maven { url "$baseUrl/abas.snapshots" }
-    maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/content/repositories/"+NEXUS_NAME }
+    mavenCentral()
+    maven {
+	credentials {
+		username mavenUser
+		password mavenPassword
+	}
+	url mavenReleaseURL
+    }
+    maven {
+	credentials {
+		username mavenUser
+		password mavenPassword
+	}
+	url mavenSnapshotURL
+    }
+    maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/nexus/content/repositories/"+NEXUS_NAME }
 }
 
 made {
