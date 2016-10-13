@@ -30,8 +30,6 @@ import de.abas.erp.jfop.rt.api.annotation.RunFopWith;
 @RunFopWith(EventHandlerRunner.class)
 public class Main {
 
-	// TODO extract text to resource file
-
 	@FieldEventHandler(field = "file", type = FieldEventType.EXIT)
 	public void fileExit(ReplacementCatalogue infosys) {
 		final String[] file = infosys.getFile().split("\\.");
