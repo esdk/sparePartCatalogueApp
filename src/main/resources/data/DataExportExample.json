@@ -1,0 +1,7 @@
+{
+  "dbnr" : 2,
+  "grnr" : 1,
+  "headfields" : [ "id", "such", "name" ],
+  "tablefields" : [ "zid", "elem", "elname", "menge" ],
+  "criteria" : "such=MW36EL11"
+}
