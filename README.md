@@ -11,10 +11,10 @@ http.proxyPort=8000
 https.proxyHost=webproxy.abas.de
 https.proxyPort=8000
 
-mavenSnapshotURL=https://nexus.abas-usa.com:8443/nexus/content/repositories/abas.snapshots
-mavenReleaseURL=https://nexus.abas-usa.com:8443/nexus/content/repositories/abas.releases
-mavenUser=<NexusUsername>
-mavenPassword=<NexusPassword>
+mavenSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots
+mavenReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases
+mavenUser=<extranet username>
+mavenPassword=<extranet password>
 ```
 
 To create the common development setup for eclipse run
@@ -27,9 +27,9 @@ To install the project make sure you are running the docker-compose.yml file or 
 
 To use the project's docker-compose.yml file, in the project's root directory run:
 ```shell
+docker login --username <extranet user> --password <extranet password> https://nexus3.abas-usa.com:18001
 docker-compose up
 ```
-Note: You have to be authenticated on docker hub and have the appropriate rights to download the abas/pi-erp image needed for the erp demo installation.
 
 Once it's up, you need to load all the $HOMEDIR/java/lib dependencies into the Nexus Server. This is only necessary once as long as the essentials_nexus container is not reinitialized. Run the following gradle command to upload the dependencies to the Nexus Server:
 ```shell
