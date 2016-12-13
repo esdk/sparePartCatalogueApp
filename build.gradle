@@ -18,7 +18,7 @@ buildscript {
 	}
     }
     dependencies{
-        classpath 'de.abas.esdk:gradlePlugin:0.4.5-SNAPSHOT'
+        classpath 'de.abas.esdk:gradlePlugin:0.4.6-SNAPSHOT'
     }
 }
 
@@ -51,6 +51,8 @@ repositories {
 made {
     app {
         name="sparePartsCatalogueApp"
+        vendorId="ab"
+        appId="spare"
         entryPoints = [
         "java:de.abas.custom.spareParts.catalogue.Main"
         ]

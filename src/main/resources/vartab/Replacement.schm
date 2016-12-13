@@ -3,7 +3,7 @@ database Replacement {
 	classname Replacement
 	structure SparePart {
 		head {
-			field "PS1:1" yvendor {
+			field "PS1:1" vendor {
 				label ""
 				heading ""
 				description Vendor
@@ -11,7 +11,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GL30 yproductno {
+			field GL30 productno {
 				label ""
 				heading ""
 				description "Product no vendor"
@@ -19,7 +19,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GL30 ymatchcode {
+			field GL30 matchcode {
 				label ""
 				heading ""
 				description "Matchcode of product"
@@ -27,7 +27,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GL40 ydescr {
+			field GL40 descr {
 				label ""
 				heading ""
 				description Description
@@ -35,7 +35,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field "R6.2" yprice {
+			field "R6.2" price {
 				label ""
 				heading ""
 				description Price
@@ -43,7 +43,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GL30 ysigned {
+			field GL30 signed {
 				label ""
 				heading ""
 				description Signature
@@ -51,7 +51,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GD19 ydate {
+			field GD19 date {
 				label ""
 				heading ""
 				description Date
@@ -59,7 +59,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field B ytransferred {
+			field B transferred {
 				label ""
 				heading ""
 				description Transferred
@@ -67,7 +67,7 @@ database Replacement {
 				showPriority A
 				changePriority A
 			}
-			field GD19 ychanged {
+			field GD19 changed {
 				label ""
 				heading ""
 				description "Last changed"
@@ -77,7 +77,7 @@ database Replacement {
 			}
 		}
 		table {
-			field "P2:1" ycorrproduct {
+			field "P2:1" corrproduct {
 				label ""
 				heading ""
 				description "Corresponding product"
