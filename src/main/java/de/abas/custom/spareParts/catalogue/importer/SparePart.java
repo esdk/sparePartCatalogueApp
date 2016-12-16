@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class SparePart {
 
-	String productNo;
-	String matchCode;
-	String description;
+	private String productNo;
+	private String matchCode;
+	private String description;
 
-	BigDecimal price;
+	private BigDecimal price;
 
 	public SparePart(String productNo, String description, String price) {
 		this.productNo = productNo;
@@ -41,7 +41,7 @@ public class SparePart {
 	}
 
 	private String parse(String matchCode) {
-		return matchCode.trim().replace(" ", "").replaceAll("\\/", ".");
+		return matchCode.trim().replace(" ", "").replaceAll("/", ".");
 	}
 
 }

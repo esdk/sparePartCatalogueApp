@@ -9,7 +9,7 @@ public class ImporterFactory {
 		CSV("csv");
 		private final String name;
 
-		private Format(String name) {
+		Format(String name) {
 			this.name = name;
 		}
 

@@ -12,7 +12,7 @@ public class Util {
 
 	private static Locale locale = Locale.ENGLISH;
 
-	public static Locale getLocale() {
+	private static Locale getLocale() {
 		try {
 			return EKS.getFOPSessionContext().getOperatingLangLocale();
 		} catch (final NullPointerException e) {

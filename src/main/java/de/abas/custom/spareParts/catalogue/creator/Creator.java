@@ -27,7 +27,7 @@ public abstract class Creator {
 		final Iterable<ReplacementCatalogue.Row> rows = infosys.table().getRows();
 		for (final ReplacementCatalogue.Row row : rows) {
 			if (row.getImport()) {
-				logger.info(String.format(Util.getMessage("creator.log.import.line", row.getRowNo())));
+				logger.info(Util.getMessage("creator.log.import.line", row.getRowNo()));
 				if (exists(infosys.getVendor(), row.getMatchcode())) {
 					if (update(row)) {
 						row.setTransfericon(ICON_UPDATE);

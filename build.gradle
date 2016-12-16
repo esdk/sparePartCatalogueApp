@@ -4,17 +4,17 @@ buildscript {
 	mavenCentral()
         maven { 
 		credentials {
-			username mavenUser
-			password mavenPassword
+			username nexusUser
+			password nexusPassword
 		}
-		url mavenReleaseURL
+		url nexusReleaseURL
 	}
 	maven {
 		credentials {
-			username mavenUser
-			password mavenPassword
+			username nexusUser
+			password nexusPassword
 		}
-		url mavenSnapshotURL
+		url nexusSnapshotURL
 	}
     }
     dependencies{
@@ -33,17 +33,17 @@ repositories {
     mavenCentral()
     maven {
 	credentials {
-		username mavenUser
-		password mavenPassword
+		username nexusUser
+		password nexusPassword
 	}
-	url mavenReleaseURL
+	url nexusReleaseURL
     }
     maven {
 	credentials {
-		username mavenUser
-		password mavenPassword
+		username nexusUser
+		password nexusPassword
 	}
-	url mavenSnapshotURL
+	url nexusSnapshotURL
     }
     maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/nexus/content/repositories/"+NEXUS_NAME }
 }
@@ -51,7 +51,7 @@ repositories {
 made {
     app {
         name="sparePartsCatalogueApp"
-        vendorId="ab"
+        vendorId="ag"
         appId="spare"
         entryPoints = [
         "java:de.abas.custom.spareParts.catalogue.Main"

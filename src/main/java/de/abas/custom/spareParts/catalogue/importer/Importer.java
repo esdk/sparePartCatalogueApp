@@ -15,15 +15,15 @@ import de.abas.erp.axi.event.EventException;
 
 public interface Importer {
 
-	static Logger logger = Logger.getLogger(Importer.class);
+	Logger logger = Logger.getLogger(Importer.class);
 
 	SparePart parseData(String line) throws EventException;
 
 	default List<SparePart> readFile(File file) throws EventException {
-		final ArrayList<SparePart> spareParts = new ArrayList<SparePart>();
+		final ArrayList<SparePart> spareParts = new ArrayList<>();
 		try (BufferedReader r = new BufferedReader(new FileReader(file))) {
 			logger.info(Util.getMessage("importer.log.read.file", file.getName()));
-			String line = "";
+			String line;
 			while ((line = r.readLine()) != null) {
 				logger.info(Util.getMessage("importer.log.line", line));
 				spareParts.add(parseData(line));

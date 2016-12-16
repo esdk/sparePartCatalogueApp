@@ -13,7 +13,7 @@ import de.abas.erp.axi.event.EventException;
 
 public class CSVImporterTest {
 
-	CSVImporter instance = new CSVImporter();
+	private CSVImporter instance = new CSVImporter();
 
 	@Test
 	public void parseDataInvalidInputTest() {

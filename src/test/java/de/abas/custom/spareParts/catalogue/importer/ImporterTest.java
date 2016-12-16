@@ -16,7 +16,7 @@ import de.abas.erp.axi.event.EventException;
 
 public class ImporterTest {
 
-	Importer instance = new CSVImporter();
+	private Importer instance = new CSVImporter();
 
 	@Test
 	public void readFileFileNotFoundTest() {
