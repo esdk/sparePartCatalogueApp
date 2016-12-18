@@ -66,11 +66,11 @@ node ('cibau.at.milkflip') {
             }
         }
         stage('Installation') {
-            sh "./gradlew publishHomeDirJars"
-            sh "./gradlew fullInstall"
+            sh "./gradlew publishHomeDirJars --stacktrace"
+            sh "./gradlew fullInstall --stacktrace"
         }
         stage('Build') {
-            sh "./gradlew verify"
+            sh "./gradlew verify --stacktrace"
         }
     } finally {
         stage('Finished') {
