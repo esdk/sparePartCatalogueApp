@@ -26,8 +26,8 @@ import de.abas.erp.db.selection.SelectionBuilder;
 public class MainImportButtonTest extends AbstractTest {
 
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("dd/MM/yy");
-	Vendor vendor;
-	SparePart sparePart;
+	private Vendor vendor;
+	private SparePart sparePart;
 
 	@Override
 	public void cleanup() {
@@ -58,41 +58,41 @@ public class MainImportButtonTest extends AbstractTest {
 		infosys.invokeStartimport();
 
 		final List<SparePart> spareParts = ctx.createQuery(SelectionBuilder.create(SparePart.class)
-				.add(Conditions.eq(SparePart.META.yvendor, vendor))
-				.add(Conditions.eq(SparePart.META.ymatchcode, infosys.table().getRow(1).getMatchcode())).build())
+				.add(Conditions.eq(SparePart.META.ysparevendor, vendor))
+				.add(Conditions.eq(SparePart.META.ysparematchcode, infosys.table().getRow(1).getMatchcode())).build())
 				.execute();
 
 		assertThat(spareParts.size(), is(1));
 
 		sparePart = spareParts.get(0);
 
-		assertThat(sparePart.getYproductno(), is(infosys.table().getRow(1).getProductno()));
-		assertThat(sparePart.getYdescr(), is(infosys.table().getRow(1).getDescr()));
-		assertThat(sparePart.getYprice(), is(infosys.table().getRow(1).getPrice()));
-		assertThat(sparePart.getYtransferred(), is(true));
-		assertThat(DATE_FORMATTER.format(sparePart.getYdate().toDate()),
+		assertThat(sparePart.getYspareproductno(), is(infosys.table().getRow(1).getProductno()));
+		assertThat(sparePart.getYsparedescr(), is(infosys.table().getRow(1).getDescr()));
+		assertThat(sparePart.getYspareprice(), is(infosys.table().getRow(1).getPrice()));
+		assertThat(sparePart.getYsparetransferred(), is(true));
+		assertThat(DATE_FORMATTER.format(sparePart.getYsparedate().toDate()),
 				is(DATE_FORMATTER.format(new AbasDate().toDate())));
-		assertThat(DATE_FORMATTER.format(sparePart.getYchanged().toDate()),
+		assertThat(DATE_FORMATTER.format(sparePart.getYsparechanged().toDate()),
 				is(DATE_FORMATTER.format(new AbasDate().toDate())));
-		assertThat(sparePart.getYsigned(), is(not("")));
+		assertThat(sparePart.getYsparesigned(), is(not("")));
 	}
 
 	@Test
 	public void importUpdateTest() throws Exception {
 		final SparePartEditor editor = ctx.newObject(SparePartEditor.class);
 		editor.setSwd("TEST");
-		editor.setYmatchcode("ET1234");
-		editor.setYvendor(vendor);
-		editor.setYdate(new AbasDate(yesterday()));
+		editor.setYsparematchcode("ET1234");
+		editor.setYsparevendor(vendor);
+		editor.setYsparedate(new AbasDate(yesterday()));
 		editor.commit();
 		sparePart = editor.objectId();
 
-		assertThat(sparePart.getYproductno(), is(""));
-		assertThat(sparePart.getYdescr(), is(""));
-		assertThat(sparePart.getYprice(), is(closeTo(BigDecimal.ZERO, new BigDecimal(1))));
-		assertThat(sparePart.getYtransferred(), is(false));
-		assertThat(DATE_FORMATTER.format(sparePart.getYdate().toDate()), is(DATE_FORMATTER.format(yesterday())));
-		assertThat(sparePart.getYsigned(), is(""));
+		assertThat(sparePart.getYspareproductno(), is(""));
+		assertThat(sparePart.getYsparedescr(), is(""));
+		assertThat(sparePart.getYspareprice(), is(closeTo(BigDecimal.ZERO, new BigDecimal(1))));
+		assertThat(sparePart.getYsparetransferred(), is(false));
+		assertThat(DATE_FORMATTER.format(sparePart.getYsparedate().toDate()), is(DATE_FORMATTER.format(yesterday())));
+		assertThat(sparePart.getYsparesigned(), is(""));
 
 		infosys.setVendor(vendor);
 		infosys.setFile("test.csv");
@@ -109,22 +109,22 @@ public class MainImportButtonTest extends AbstractTest {
 		infosys.invokeStartimport();
 
 		final List<SparePart> spareParts = ctx.createQuery(SelectionBuilder.create(SparePart.class)
-				.add(Conditions.eq(SparePart.META.yvendor, vendor))
-				.add(Conditions.eq(SparePart.META.ymatchcode, infosys.table().getRow(1).getMatchcode())).build())
+				.add(Conditions.eq(SparePart.META.ysparevendor, vendor))
+				.add(Conditions.eq(SparePart.META.ysparematchcode, infosys.table().getRow(1).getMatchcode())).build())
 				.execute();
 
 		assertThat(spareParts.size(), is(1));
 
 		ctx.flush();
 
-		assertThat(sparePart.getYproductno(), is(infosys.table().getRow(1).getProductno()));
-		assertThat(sparePart.getYdescr(), is(infosys.table().getRow(1).getDescr()));
-		assertThat(sparePart.getYprice(), is(infosys.table().getRow(1).getPrice()));
-		assertThat(sparePart.getYtransferred(), is(true));
-		assertThat(DATE_FORMATTER.format(sparePart.getYdate().toDate()), is(DATE_FORMATTER.format(yesterday())));
-		assertThat(DATE_FORMATTER.format(sparePart.getYchanged().toDate()),
+		assertThat(sparePart.getYspareproductno(), is(infosys.table().getRow(1).getProductno()));
+		assertThat(sparePart.getYsparedescr(), is(infosys.table().getRow(1).getDescr()));
+		assertThat(sparePart.getYspareprice(), is(infosys.table().getRow(1).getPrice()));
+		assertThat(sparePart.getYsparetransferred(), is(true));
+		assertThat(DATE_FORMATTER.format(sparePart.getYsparedate().toDate()), is(DATE_FORMATTER.format(yesterday())));
+		assertThat(DATE_FORMATTER.format(sparePart.getYsparechanged().toDate()),
 				is(DATE_FORMATTER.format(new AbasDate().toDate())));
-		assertThat(sparePart.getYsigned(), is(not("")));
+		assertThat(sparePart.getYsparesigned(), is(not("")));
 
 	}
 
@@ -147,8 +147,7 @@ public class MainImportButtonTest extends AbstractTest {
 	private Date yesterday() {
 		final Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DATE, -1);
-		final Date yesterday = calendar.getTime();
-		return yesterday;
+		return calendar.getTime();
 	}
 
 }

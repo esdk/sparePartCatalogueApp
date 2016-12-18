@@ -59,7 +59,7 @@ made {
         shared=true
         infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
         tables = ["Replacement"]
-	data = [ "data.json" ]
+	    data = [ "data.json" ]
     }
 
     abas {
