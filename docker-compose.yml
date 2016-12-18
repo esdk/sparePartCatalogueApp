@@ -7,17 +7,17 @@ services:
     #
     erp-bpmn:
       image: abas/pi-erp:latest
-      container_name: "essentials_erp"
+      container_name: "demo_app_erp"
 
       ports:
-      - "2205:22"
-      - "8001:80"
-      - "6560:6550"
-      - "48592:48392"
+      - "2207:22"
+      - "8003:80"
+      - "6570:6550"
+      - "48792:48392"
 
       environment:
       - ABAS_HOST
-      - ABAS_GUI_PORT=48592
+      - ABAS_GUI_PORT=48792
 
       # starteVersion muss wegen der Volltextsuche als User s3 gestartet werden
       # Als root-user gibt es sonst Probleme wegen dem ulimit der open files.
@@ -27,6 +27,6 @@ services:
     # nexus host for madep
     nexus:
       image: sonatype/nexus:oss
-      container_name: "essentials_nexus"
+      container_name: "demo_app_nexus"
       ports:
-      - "8081:8081"
+      - "8085:8081"

@@ -1,0 +1,81 @@
+def prepareEnv() {
+    def jdkHome = tool name: 'jdk 1.8', type: 'hudson.model.JDK'
+    env.PATH = "${jdkHome}/bin:${env.PATH}"
+    jdkHome = null
+    withCredentials([[$class: 'StringBinding', credentialsId: '6306da0b-08c3-46b0-96db-bd1ce65a72f6', variable: 'MAVENUSER'], [$class: 'StringBinding', credentialsId: '355f8837-849f-4d88-9285-c26e9bd6ad49', variable: 'MAVENPASSWORD']]) {
+        writeFile file: 'gradle.properties', text: """nexusSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots/
+nexusReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases/
+nexusUser=$MAVENUSER
+nexusPassword=$MAVENPASSWORD
+ABAS_HOMEDIR=/abas/s3
+ABAS_CLIENTDIR=/abas/erp1
+ABAS_CLIENTID=erp1
+EDP_CLIENT=/abas/erp1
+EDP_USER=
+EDP_PASSWORD=sy
+EDP_HOST=milkflip
+EDP_PORT=6570
+NEXUS_HOST=milkflip
+NEXUS_PORT=8085
+NEXUS_NAME=docker
+NEXUS_PASSWORD=admin123
+SSH_HOST=milkflip
+SSH_PORT=2207
+SSH_USER=s3
+SSH_PASSWORD=none
+SSH_KEY=
+installType=SSH"""
+    }
+}
+
+def cleanup() {
+    sh "docker-compose down"
+}
+
+def notify(String buildStatus) {
+    // null means successful
+    buildStatus = buildStatus ?: 'SUCCESSFUL'
+
+    // defaults
+    def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+    def summary = "${subject} (${env.BUILD_URL})"
+    def colorCode
+
+    // build status evaluation
+    if(buildStatus == 'SUCCESSFUL') {
+        color = 'GREEN'
+        colorCode = '#00FF00'
+    } else {
+        color = 'RED'
+        colorCode = '#FF0000'
+    }
+
+    // send notification
+    slackSend(channel: 'esdk-bot', color: colorCode, message: summary)
+}
+
+node ('cibau.at.milkflip') {
+    prepareEnv()
+    try {
+        stage('Preparation') { // for display purposes
+            git url: 'https://github.com/Tschasmine/sparePartCatalogueApp.git'
+            try {
+                cleanup()
+            } finally {
+                sh "docker-compose up -d"
+            }
+        }
+        stage('Installation') {
+            sh "./gradlew publishHomeDirJars"
+            sh "./gradlew fullInstall"
+        }
+        stage('Build') {
+            sh "./gradlew verify"
+        }
+    } finally {
+        stage('Finished') {
+            archiveArtifacts 'build/reports/**'
+            notify(currentBuild.result)
+        }
+    }
+}
