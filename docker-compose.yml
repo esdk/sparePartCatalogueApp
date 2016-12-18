@@ -29,4 +29,4 @@ services:
       image: sonatype/nexus:oss
       container_name: "demo_app_nexus"
       ports:
-      - "8085:8081"
+      - "8080:8081"

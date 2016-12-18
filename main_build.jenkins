@@ -16,7 +16,7 @@ EDP_PASSWORD=sy
 EDP_HOST=milkflip
 EDP_PORT=6561
 NEXUS_HOST=milkflip
-NEXUS_PORT=8085
+NEXUS_PORT=8080
 NEXUS_NAME=docker
 NEXUS_PASSWORD=admin123
 SSH_HOST=milkflip
@@ -63,6 +63,7 @@ node ('cibau.at.milkflip') {
                 cleanup()
             } finally {
                 sh "docker-compose up -d"
+                sleep 15
             }
         }
         stage('Installation') {
