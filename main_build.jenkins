@@ -62,6 +62,7 @@ node ('cibau.at.milkflip') {
             try {
                 cleanup()
             } finally {
+                sh "ABAS_HOST=\$(hostname)"
                 sh "docker-compose up -d"
                 sleep 15
             }
