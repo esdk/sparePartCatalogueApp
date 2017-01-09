@@ -31,7 +31,12 @@ docker login --username <extranet user> --password <extranet password> https://n
 docker-compose up
 ```
 
-Once it's up, you need to load all the $HOMEDIR/java/lib dependencies into the Nexus Server. This is only necessary once as long as the essentials_nexus container is not reinitialized. Run the following gradle command to upload the dependencies to the Nexus Server:
+Once it's up, initialize the gradle.properties with the appropriate values by running:
+```shell
+./initGradleProperties.sh
+```
+
+Now, you need to load all the $HOMEDIR/java/lib dependencies into the Nexus Server. This is only necessary once as long as the essentials_nexus container is not reinitialized. Run the following gradle command to upload the dependencies to the Nexus Server:
 ```shell
 ./gradlew publishHomeDirJars
 ```
