@@ -11,10 +11,10 @@ http.proxyPort=8000
 https.proxyHost=webproxy.abas.de
 https.proxyPort=8000
 
-mavenSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots
-mavenReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases
-mavenUser=<extranet username>
-mavenPassword=<extranet password>
+nexusSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots
+nexusReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases
+nexusUser=<extranet username>
+nexusPassword=<extranet password>
 ```
 
 To create the common development setup for eclipse run
@@ -33,25 +33,25 @@ docker-compose up
 
 Once it's up, you need to load all the $HOMEDIR/java/lib dependencies into the Nexus Server. This is only necessary once as long as the essentials_nexus container is not reinitialized. Run the following gradle command to upload the dependencies to the Nexus Server:
 ```shell
-gradle publishHomeDirJars
+./gradlew publishHomeDirJars
 ```
 
 Now you can install the project as follows:
 ```shell
-gradle fullInstall
+./gradlew fullInstall
 ```
 ## Development
 If you want to make changes to the project before installing you still need to run the docker-compose.yml file or at least have a Nexus Server set up to work with.
 
 Then run
 ```shell
-gradle publishHomeDirJars
+./gradlew publishHomeDirJars
 ```
 
 You also need to run
 ```shell
-gradle publishClientDirJars
-gradle eclipse
+./gradlew publishClientDirJars
+./gradlew eclipse
 ```
 to upload the $MANDANTDIR/java/lib dependencies to the Nexus Server and set eclipse up to work with the uploaded dependencies.
 
