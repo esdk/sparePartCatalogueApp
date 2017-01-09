@@ -18,13 +18,15 @@ buildscript {
 	}
     }
     dependencies{
-        classpath 'de.abas.esdk:gradlePlugin:0.4.6-SNAPSHOT'
+        classpath 'de.abas.esdk:gradlePlugin:0.4.8-SNAPSHOT'
     }
 }
 
 plugins {
     id "java"
     id "eclipse"
+    id "maven-publish"
+    id 'com.palantir.git-version' version '0.5.2'
 }
 apply plugin: 'made-plugin'
 
@@ -98,6 +100,51 @@ compileJava {
 }
 
 configurations { compile.extendsFrom provided }
+
+group='de.abas.esdk.app'
+def versionString = gitVersion().toString()
+if (versionString.contains("-")) {
+    version versionString.split("-")[0].substring(1) + "-SNAPSHOT"
+} else {
+    version versionString.substring(1)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) { from components.java }
+        all {
+            pom.withXml {
+                asNode().dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+                        dep.name == it.artifactId.text()
+                    }
+                }.each { it.scope*.value = 'compile'}
+            }
+        }
+    }
+    repositories {
+        if(project.hasProperty("nexusSnapshotURL") && project.hasProperty("nexusReleaseURL")
+                && project.hasProperty("nexusUser") && project.hasProperty("nexusPassword")){
+            if(project.version.endsWith('-SNAPSHOT')) {
+                maven {
+                    url nexusSnapshotURL
+                    credentials {
+                        username nexusUser
+                        password nexusPassword
+                    }
+                }
+            } else {
+                maven {
+                    url nexusReleaseURL
+                    credentials {
+                        username nexusUser
+                        password nexusPassword
+                    }
+                }
+            }
+        }
+    }
+}
 
 dependencies {
     provided 'de.abas.homedir:log4j:1.0.0'

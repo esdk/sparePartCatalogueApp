@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
     # The ERP Container
     # -----------------
@@ -10,14 +10,14 @@ services:
       container_name: "demo_app_erp"
 
       ports:
-      - "2207:22"
-      - "8003:80"
-      - "6561:6550"
-      - "48792:48392"
+      - "${SSH_TEST_PORT:-2205}:22"
+      - "${MINI_GUI_PORT:-8001}:80"
+      - "${EDP_TEST_PORT:-6560}:6550"
+      - "${GUI_TEST_PORT:-48592}:48392"
 
       environment:
       - ABAS_HOST
-      - ABAS_GUI_PORT=48792
+      - ABAS_GUI_PORT=${GUI_TEST_PORT:-48592}
 
       # starteVersion muss wegen der Volltextsuche als User s3 gestartet werden
       # Als root-user gibt es sonst Probleme wegen dem ulimit der open files.

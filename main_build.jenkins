@@ -29,7 +29,9 @@ installType=SSH"""
 }
 
 def cleanup() {
-    sh "docker-compose down"
+    withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
+        sh "docker-compose down"
+    }
 }
 
 def notify(String buildStatus) {
@@ -63,7 +65,9 @@ node ('cibau.at.milkflip') {
                 cleanup()
             } finally {
                 sh "ABAS_HOST=\$(hostname)"
-                sh "docker-compose up -d"
+                withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
+                    sh "docker-compose up -d"
+                }
                 sleep 15
             }
         }
@@ -74,6 +78,12 @@ node ('cibau.at.milkflip') {
         stage('Build') {
             sh "./gradlew verify --stacktrace"
         }
+        stage('Publish') {
+            sh "./gradlew publish --stacktrace"
+        }
+    } catch (any) {
+        currentBuild.result = 'FAILURE'
+        throw any
     } finally {
         stage('Finished') {
             archiveArtifacts 'build/reports/**'
