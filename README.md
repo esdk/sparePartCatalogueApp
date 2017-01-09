@@ -19,7 +19,7 @@ nexusPassword=<extranet password>
 
 To create the common development setup for eclipse run
 ```shell
-gradle eclipse
+./gradlew eclipse
 ```
 
 ## Installation
