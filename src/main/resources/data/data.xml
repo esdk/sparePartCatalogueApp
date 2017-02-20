@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ABASData>
+    <RecordSet tableNumber="1:1" tableName="Lieferant:Lieferant">
+        <Record id="(167,1,0)">
+            <Head>
+                <Field name="id" abasType="ID1">(167,1,0)</Field>
+                <Field name="guid" abasType="GLA38">26549f40-59dc-4775-afa2-f7383d68d805</Field>
+                <Field name="such" abasType="SWK1">TESTVENDOR</Field>
+                <Field name="name" abasType="GL45">Vendor test for spare parts app</Field>
+            </Head>
+        </Record>
+    </RecordSet>
+</ABASData>

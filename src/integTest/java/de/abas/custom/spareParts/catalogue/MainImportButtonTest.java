@@ -44,7 +44,7 @@ public class MainImportButtonTest extends AbstractTest {
 	@Test
 	public void importCreateTest() {
 		infosys.setVendor(vendor);
-		infosys.setFile("test.csv");
+		infosys.setFile("ow1/test.csv");
 
 		infosys.invokeStart();
 
@@ -95,7 +95,7 @@ public class MainImportButtonTest extends AbstractTest {
 		assertThat(sparePart.getYsparesigned(), is(""));
 
 		infosys.setVendor(vendor);
-		infosys.setFile("test.csv");
+		infosys.setFile("ow1/test.csv");
 
 		infosys.invokeStart();
 

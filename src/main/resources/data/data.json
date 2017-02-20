@@ -3,7 +3,7 @@
     {
       "dbnr" : 1,
       "grnr" : 1,
-      "headfields" : [ "id", "such", "name" ],
+      "headfields" : [ "id", "guid", "such", "name" ],
       "tablefields" : [],
       "criteria" : ""
     }

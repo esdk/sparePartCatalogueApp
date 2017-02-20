@@ -18,7 +18,7 @@ buildscript {
 	}
     }
     dependencies{
-        classpath 'de.abas.esdk:gradlePlugin:0.4.8-SNAPSHOT'
+        classpath 'de.abas.esdk:gradlePlugin:0.4.11-SNAPSHOT'
     }
 }
 
@@ -26,7 +26,7 @@ plugins {
     id "java"
     id "eclipse"
     id "maven-publish"
-    id 'com.palantir.git-version' version '0.5.2'
+    id "com.palantir.git-version" version "0.5.3"
 }
 apply plugin: 'made-plugin'
 
@@ -62,6 +62,7 @@ made {
         infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
         tables = ["Replacement"]
 	    data = [ "data.json" ]
+        keys = []
     }
 
     abas {
@@ -111,15 +112,10 @@ if (versionString.contains("-")) {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) { from components.java }
-        all {
-            pom.withXml {
-                asNode().dependencies.'*'.findAll() {
-                    it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
-                        dep.name == it.artifactId.text()
-                    }
-                }.each { it.scope*.value = 'compile'}
-            }
+        mavenJava(MavenPublication) {
+            groupId 'de.abas.esdk.app'
+            artifactId 'abasag-sparePartsCatalogue'
+            artifact "build/libs/${project.name}-standalone-app.jar"
         }
     }
     repositories {

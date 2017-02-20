@@ -21,7 +21,7 @@ public class MainStartButtonTest extends AbstractTest implements CommandRunner {
 
 	@Test
 	public void startAfterTest() throws Exception {
-		infosys.setFile("test.csv");
+		infosys.setFile("ow1/test.csv");
 		infosys.invokeStart();
 
 		assertThat(infosys.table().getRowCount(), is(1));
