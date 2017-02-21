@@ -6,10 +6,10 @@ Add a gradle.properties file to your $GRADLE_USER_HOME.
 
 ```
 #If you use a proxy add it here
-http.proxyHost=webproxy.abas.de
-http.proxyPort=8000
-https.proxyHost=webproxy.abas.de
-https.proxyPort=8000
+systemProp.http.proxyHost=webproxy.abas.de
+systemProp.http.proxyPort=8000
+systemProp.https.proxyHost=webproxy.abas.de
+systemProp.https.proxyPort=8000
 
 nexusSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots
 nexusReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases
