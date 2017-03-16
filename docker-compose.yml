@@ -6,7 +6,7 @@ services:
     # ssh in den Container:   ssh localhost -l s3 -p 2205 -i docker_erp.key
     #
     erp-bpmn:
-      image: abas/pi-erp:latest
+      image: nexus3.abas-usa.com:18001/abas-erp:latest
       container_name: "demo_app_erp"
 
       ports:

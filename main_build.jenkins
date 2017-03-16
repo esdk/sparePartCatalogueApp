@@ -2,6 +2,7 @@ def prepareEnv() {
     def jdkHome = tool name: 'jdk 1.8', type: 'hudson.model.JDK'
     env.PATH = "${jdkHome}/bin:${env.PATH}"
     jdkHome = null
+    sh "export JAVA_OPTS='-Dhttp.proxyHost=webproxy.abas.de -Dhttp.proxyPort=8000 -Dhttps.proxyHost=webproxy.abas.de -Dhttps.proxyPort=8000'"
     withCredentials([[$class: 'StringBinding', credentialsId: '6306da0b-08c3-46b0-96db-bd1ce65a72f6', variable: 'MAVENUSER'], [$class: 'StringBinding', credentialsId: '355f8837-849f-4d88-9285-c26e9bd6ad49', variable: 'MAVENPASSWORD']]) {
         writeFile file: 'gradle.properties', text: """nexusSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots/
 nexusReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases/
@@ -30,7 +31,7 @@ installType=SSH"""
 
 def cleanup() {
     withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
-        sh "docker-compose down"
+        sh "docker-compose down || true"
     }
 }
 
@@ -65,6 +66,9 @@ node ('cibau.at.milkflip') {
                 cleanup()
             } finally {
                 sh "ABAS_HOST=\$(hostname)"
+                withCredentials([[$class: 'StringBinding', credentialsId: '6306da0b-08c3-46b0-96db-bd1ce65a72f6', variable: 'MAVENUSER'], [$class: 'StringBinding', credentialsId: '355f8837-849f-4d88-9285-c26e9bd6ad49', variable: 'MAVENPASSWORD']]) {
+                    sh 'docker login https://nexus3.abas-usa.com:18001 -u $MAVENUSER -p $MAVENPASSWORD'
+                }
                 withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
                     sh "docker-compose up -d"
                 }
