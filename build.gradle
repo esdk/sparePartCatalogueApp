@@ -63,6 +63,7 @@ made {
         tables = ["Replacement"]
 	    data = [ "data.json" ]
         keys = []
+        enums =["FILE_FORMAT"]
     }
 
     abas {

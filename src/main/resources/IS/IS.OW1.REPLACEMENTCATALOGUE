@@ -70,7 +70,7 @@ Z#0#isstartzeit##n####(0)######n#0#n#0##n##
 Z#1#isvendor#PS1:1#n#Vendor#A#A#(2)######n#1#n#0##n##
 Z#1#isfile#GL100#n#Path to file#A#A#(2)#####java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp#n#1#n#0##n##
 Z#1#isstartimport#BU3#n#Start import#A#A#(1)##java:de.abas.custom.spareParts.catalogue.Main@sparePartsCatalogueApp####n#1#n#0##n##
-Z#1#isformat#GL5#n#File format#A#A#(2)######n#1#n#0##n##
+Z#1#isformat#AZK1000001#n#File format#A#A#(2)######n#1#n#0##n##
 Z#0#ittabnr##y####(0)######n#0#n#0##n##
 Z#0#itzid##y####(0)######n#0#n#0##n##
 Z#0#itzn##y####(0)######n#0#n#0##n##

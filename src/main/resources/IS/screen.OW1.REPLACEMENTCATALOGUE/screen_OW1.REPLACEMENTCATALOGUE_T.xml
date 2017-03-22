@@ -14,7 +14,7 @@
        <label msgId="replacementcatalogue_ow1_ftable_import" />
       </cell>
       <cell alignX="fill" alignY="fill" gridX="1" gridY="0">
-       <erpfield msgId="replacementcatalogue_ow1_ftable_import" s3Name="1:import" />
+       <erpfield s3Name="1:import" />
       </cell>
       <cell gridX="2" gridY="0">
        <erpfield access="readOnly" dimX="1" s3Name="1:transfericon" />
