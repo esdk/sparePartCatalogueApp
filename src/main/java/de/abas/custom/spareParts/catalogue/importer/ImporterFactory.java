@@ -2,31 +2,17 @@ package de.abas.custom.spareParts.catalogue.importer;
 
 import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
+import de.abas.erp.db.schema.userenums.UserEnumImportfileformat;
 
 public class ImporterFactory {
 
-	public enum Format {
-		CSV("csv");
-		private final String name;
-
-		Format(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public String toString() {
-			return name;
-		}
-
-	}
-
-	public static Importer newInstance(String format) throws EventException {
-		if (format.equals(Format.CSV.toString())) {
+	public static Importer newInstance(UserEnumImportfileformat format) throws EventException {
+		if (format.equals(UserEnumImportfileformat.CSV)) {
 			return new CSVImporter();
 		}
 
 		String fileFormats = "";
-		for (final Format fileFormat : Format.values()) {
+		for (UserEnumImportfileformat fileFormat : UserEnumImportfileformat.values()) {
 			fileFormats = fileFormat + ", ";
 		}
 		throw new EventException(
