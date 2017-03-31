@@ -59,9 +59,9 @@ public class SparePartCreator extends Creator {
     @Override
     protected boolean update(ReplacementCatalogue.Row row) {
         logger.info(Util.getMessage("sparepartcreator.log.start.updating"));
-        SparePartEditor editor;
+        SparePartEditor editor = getSparePart().createEditor();
         try {
-            editor = getSparePart().createEditor().open(EditorAction.UPDATE);
+            editor.open(EditorAction.UPDATE);
             editor.setYspareproductno(row.getProductno());
             editor.setYsparedescr(row.getDescr());
             editor.setYspareprice(row.getPrice());
@@ -75,6 +75,10 @@ public class SparePartCreator extends Creator {
             logger.error(
                     Util.getMessage("sparepartcreator.log.err.updating", getSparePart().getIdno(), e.getMessage()));
             return false;
+        } finally {
+            if (editor != null && editor.active()) {
+                editor.abort();
+            }
         }
     }
 
