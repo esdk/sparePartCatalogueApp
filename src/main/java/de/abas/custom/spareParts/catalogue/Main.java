@@ -35,6 +35,7 @@ public class Main {
 	public void fileExit(ReplacementCatalogue infosys) {
 		final String[] file = infosys.getFile().split("\\.");
 		infosys.setFormat("csv".equals(file[file.length - 1].toLowerCase()) ? UserEnumImportfileformat.CSV : UserEnumImportfileformat.Undefined);
+
 	}
 
 	@ScreenEventHandler(type = ScreenEventType.ENTER)
