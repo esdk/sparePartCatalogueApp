@@ -2,6 +2,7 @@ package de.abas.custom.spareParts.catalogue.importer;
 
 import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
+import de.abas.erp.db.schema.userenums.UserEnumImportfileformat;
 
 public class ImporterFactory {
 
@@ -20,8 +21,8 @@ public class ImporterFactory {
 
 	}
 
-	public static Importer newInstance(String format) throws EventException {
-		if (format.equals(Format.CSV.toString())) {
+	public static Importer newInstance(UserEnumImportfileformat format) throws EventException {
+		if (format == UserEnumImportfileformat.CSV) {
 			return new CSVImporter();
 		}
 
