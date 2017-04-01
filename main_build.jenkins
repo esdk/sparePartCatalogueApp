@@ -71,7 +71,7 @@ node ('cibau.at.milkflip') {
                 withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
                     sh "docker-compose up -d"
                 }
-                sleep 15
+                sleep 30
             }
         }
         stage('Installation') {

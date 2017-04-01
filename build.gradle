@@ -116,7 +116,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'de.abas.esdk.app'
             artifactId 'abasag-sparePartsCatalogue'
-            artifact "build/libs/${project.name}-standalone-app.jar"
+            artifact createAppJar
         }
     }
     repositories {
