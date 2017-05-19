@@ -6,7 +6,7 @@ services:
     # ssh in den Container:   ssh localhost -l s3 -p 2205 -i docker_erp.key
     #
     erp-bpmn:
-      image: intra.registry.abas.sh/abas-erp:latest
+      image: intra.registry.abas.sh/cloud-erp-neumand1:2016r4n13
       container_name: "demo_app_erp"
 
       ports:
@@ -29,4 +29,4 @@ services:
       image: sonatype/nexus:oss
       container_name: "demo_app_nexus"
       ports:
-      - "8080:8081"
+      - "${NEXUS_TEST_PORT:-8081}:8081"

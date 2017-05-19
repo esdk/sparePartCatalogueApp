@@ -29,7 +29,7 @@ installType=SSH"""
 }
 
 def cleanup() {
-    withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
+    withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792', 'NEXUS_TEST_PORT=8080']) {
         sh "docker-compose down || true"
     }
 }
@@ -68,7 +68,7 @@ node ('cibau.at.milkflip') {
                 withCredentials([[$class: 'StringBinding', credentialsId: '6306da0b-08c3-46b0-96db-bd1ce65a72f6', variable: 'MAVENUSER'], [$class: 'StringBinding', credentialsId: '355f8837-849f-4d88-9285-c26e9bd6ad49', variable: 'MAVENPASSWORD']]) {
                     sh 'docker login intra.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD'
                 }
-                withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792']) {
+                withEnv(['SSH_TEST_PORT=2207', 'MINI_GUI_PORT=8003', 'EDP_TEST_PORT=6561', 'GUI_TEST_PORT=48792', 'NEXUS_TEST_PORT=8080']) {
                     sh "docker-compose up -d"
                 }
                 sleep 30
