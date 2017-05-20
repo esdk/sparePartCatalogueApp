@@ -5,9 +5,9 @@ services:
     # Accessing container via ssh:
     # ssh in den Container:   ssh localhost -l s3 -p 2205 -i docker_erp.key
     #
-    erp-bpmn:
+    erp:
       image: intra.registry.abas.sh/cloud-erp-neumand1:2016r4n13
-      container_name: "demo_app_erp"
+      container_name: "erp"
 
       ports:
       - "${SSH_TEST_PORT:-2205}:22"
@@ -27,6 +27,6 @@ services:
     # nexus host for madep
     nexus:
       image: sonatype/nexus:oss
-      container_name: "demo_app_nexus"
+      container_name: "nexus"
       ports:
       - "${NEXUS_TEST_PORT:-8081}:8081"

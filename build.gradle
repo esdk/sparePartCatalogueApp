@@ -7,14 +7,14 @@ buildscript {
 			username nexusUser
 			password nexusPassword
 		}
-		url nexusReleaseURL
+		url esdkReleaseURL
 	}
 	maven {
 		credentials {
 			username nexusUser
 			password nexusPassword
 		}
-		url nexusSnapshotURL
+		url esdkSnapshotURL
 	}
     }
     dependencies{
@@ -38,14 +38,14 @@ repositories {
 		username nexusUser
 		password nexusPassword
 	}
-	url nexusReleaseURL
+	url esdkReleaseURL
     }
     maven {
 	credentials {
 		username nexusUser
 		password nexusPassword
 	}
-	url nexusSnapshotURL
+	url esdkSnapshotURL
     }
     maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/nexus/content/repositories/"+NEXUS_NAME }
 }
@@ -120,11 +120,11 @@ publishing {
         }
     }
     repositories {
-        if(project.hasProperty("nexusSnapshotURL") && project.hasProperty("nexusReleaseURL")
+        if(project.hasProperty("esdkSnapshotURL") && project.hasProperty("esdkReleaseURL")
                 && project.hasProperty("nexusUser") && project.hasProperty("nexusPassword")){
             if(project.version.endsWith('-SNAPSHOT')) {
                 maven {
-                    url nexusSnapshotURL
+                    url esdkSnapshotURL
                     credentials {
                         username nexusUser
                         password nexusPassword
@@ -132,7 +132,7 @@ publishing {
                 }
             } else {
                 maven {
-                    url nexusReleaseURL
+                    url esdkReleaseURL
                     credentials {
                         username nexusUser
                         password nexusPassword
