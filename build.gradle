@@ -18,7 +18,7 @@ buildscript {
 	}
     }
     dependencies{
-        classpath 'de.abas.esdk:gradlePlugin:0.4.11-SNAPSHOT'
+        classpath 'de.abas.esdk:gradlePlugin:0.5.0-SNAPSHOT'
     }
 }
 
@@ -28,7 +28,7 @@ plugins {
     id "maven-publish"
     id "com.palantir.git-version" version "0.5.3"
 }
-apply plugin: 'made-plugin'
+apply plugin: 'abas-esdk'
 
 repositories {
     mavenLocal()
@@ -50,7 +50,7 @@ repositories {
     maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/nexus/content/repositories/"+NEXUS_NAME }
 }
 
-made {
+esdk {
     app {
         name="sparePartsCatalogueApp"
         vendorId="ag"

@@ -24,7 +24,7 @@ services:
       user: s3
       hostname: dockerbau
 
-    # nexus host for madep
+    # nexus host for esdk
     nexus:
       image: sonatype/nexus:oss
       container_name: "nexus"
