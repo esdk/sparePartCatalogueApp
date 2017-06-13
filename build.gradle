@@ -1,52 +1,15 @@
-buildscript {
-    repositories {
-        mavenLocal()
-	mavenCentral()
-        maven { 
-		credentials {
-			username nexusUser
-			password nexusPassword
-		}
-		url esdkReleaseURL
-	}
-	maven {
-		credentials {
-			username nexusUser
-			password nexusPassword
-		}
-		url esdkSnapshotURL
-	}
-    }
-    dependencies{
-        classpath 'de.abas.esdk:gradlePlugin:0.5.0-SNAPSHOT'
-    }
-}
-
 plugins {
     id "java"
     id "eclipse"
     id "maven-publish"
     id "com.palantir.git-version" version "0.5.3"
+    id "de.abas.esdk" version "0.5.1"
 }
-apply plugin: 'abas-esdk'
 
 repositories {
     mavenLocal()
+    jcenter()
     mavenCentral()
-    maven {
-	credentials {
-		username nexusUser
-		password nexusPassword
-	}
-	url esdkReleaseURL
-    }
-    maven {
-	credentials {
-		username nexusUser
-		password nexusPassword
-	}
-	url esdkSnapshotURL
-    }
     maven { url "http://"+NEXUS_HOST+":"+NEXUS_PORT+"/nexus/content/repositories/"+NEXUS_NAME }
 }
 
