@@ -12,6 +12,8 @@
 
 #####ESDK Plugin on [Gradle Plugins](https://plugins.gradle.org/plugin/de.abas.esdk)
 
+---
+
 ### build.gradle 
 #### The esdk closure
 
@@ -26,6 +28,8 @@
 @[28]
 @[29]
 @[30-31]
+
+---
 
 ### build.gradle
 #### Dependencies
