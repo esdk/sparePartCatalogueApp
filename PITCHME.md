@@ -40,6 +40,7 @@
 ---
 
 ### gradle.properties
+#### Defining client access
 +++?code=gradle.properties.template&lang=properties
 @[1-3]
 @[5-9]
