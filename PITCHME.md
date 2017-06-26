@@ -40,7 +40,7 @@
 ---
 
 ### gradle.properties
-+++?code=gradle.properties&lang=properties
++++?code=gradle.properties.template&lang=properties
 @[1-3]
 @[5-9]
 @[11-14]
