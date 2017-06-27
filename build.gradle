@@ -29,7 +29,7 @@ plugins {
 	id "com.palantir.git-version" version "0.5.3"
 }
 
-apply plugin: 'abas-esdk'
+apply plugin: 'de.abas.esdk'
 
 repositories {
 	mavenLocal()
