@@ -23,6 +23,7 @@ buildscript {
 }
 
 plugins {
+	id 'com.gradle.build-scan' version '1.8'
 	id "java"
 	id "eclipse"
 	id "maven-publish"
@@ -30,6 +31,11 @@ plugins {
 }
 
 apply plugin: 'de.abas.esdk'
+
+buildScan {
+	licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+	licenseAgree = 'yes'
+}
 
 repositories {
 	mavenLocal()
