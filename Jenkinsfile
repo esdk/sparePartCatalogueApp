@@ -1,4 +1,4 @@
-@Library('esdk-jenkins-lib@refactor') _
+@Library('esdk-jenkins-lib@master') _
 
 node {
 	timestamps {
@@ -20,6 +20,7 @@ node {
 					sleep 30
 				}
 				stage('Installation') {
+					shGradle("checkPreconditions")
 					shGradle("publishHomeDirJars")
 					shGradle("fullInstall")
 				}
