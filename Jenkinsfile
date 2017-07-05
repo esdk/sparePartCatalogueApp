@@ -1,4 +1,4 @@
-@Library('esdk-jenkins-lib@ESDK-198-refactor-jenkinsfiles-of-all-es') _
+@Library('esdk-jenkins-lib@master') _
 
 node {
 	timestamps {
