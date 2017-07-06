@@ -20,6 +20,7 @@ node {
 					sleep 30
 				}
 				stage('Installation') {
+					shGradle("checkPreconditions")
 					shGradle("publishHomeDirJars")
 					shGradle("fullInstall")
 				}
@@ -32,6 +33,7 @@ node {
 					}
 				}
 			} catch (any) {
+				any.printStackTrace()
 				currentBuild.result = 'FAILURE'
 				throw any
 			} finally {
