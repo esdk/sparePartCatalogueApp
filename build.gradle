@@ -4,7 +4,7 @@ plugins {
 	id "eclipse"
 	id "maven-publish"
 	id "com.palantir.git-version" version "0.5.3"
-	id "de.abas.esdk" version "0.5.3"
+	id "de.abas.esdk" version "0.6.1"
 	id "com.dorongold.task-tree" version "1.3"
 }
 
