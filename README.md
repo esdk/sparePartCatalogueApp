@@ -6,13 +6,13 @@ Add a gradle.properties file to your $GRADLE_USER_HOME.
 
 ```
 #If you use a proxy add it here
-systemProp.http.proxyHost=webproxy.abas.de
-systemProp.http.proxyPort=8000
-systemProp.https.proxyHost=webproxy.abas.de
-systemProp.https.proxyPort=8000
+systemProp.http.proxyHost=<your_proxy>
+systemProp.http.proxyPort=<your_proxy_port>
+systemProp.https.proxyHost=<your_proxy>
+systemProp.https.proxyPort=<your_proxy_port>
 
-nexusSnapshotURL=https://nexus3.abas-usa.com:8443/repository/abas.snapshots
-nexusReleaseURL=https://nexus3.abas-usa.com:8443/repository/abas.releases
+esdkSnapshotURL=https://registry.abas.sh/repository/abas.esdk.snapshots/
+esdkReleaseURL=https://registry.abas.sh/repository/abas.esdk.releases/
 nexusUser=<extranet username>
 nexusPassword=<extranet password>
 ```
@@ -27,7 +27,7 @@ To install the project make sure you are running the docker-compose.yml file or 
 
 To use the project's docker-compose.yml file, in the project's root directory run:
 ```shell
-docker login --username <extranet user> --password <extranet password> https://nexus3.abas-usa.com:18001
+docker login intra.registry.abas.sh -u <extranet user> -p <extranet password>
 docker-compose up
 ```
 
