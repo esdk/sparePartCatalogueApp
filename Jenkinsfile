@@ -5,8 +5,9 @@ node {
 		ansiColor('xterm') {
 			try {
 				stage('Setup') {
-					prepareEnv()
 					checkout scm
+					sh 'git clean -fdx'
+					prepareEnv()
 					shInstallDockerCompose()
 					initGradleProps()
 					showGradleProps()
