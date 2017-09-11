@@ -1,12 +1,31 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven {
+			credentials {
+				username nexusUser
+				password nexusPassword
+			}
+			url esdkSnapshotURL
+		}
+		jcenter()
+	}
+	dependencies {
+		classpath "de.abas.esdk:gradlePlugin:0.6.9-SNAPSHOT"
+	}
+}
+
 plugins {
 	id 'com.gradle.build-scan' version '1.8'
 	id "java"
 	id "eclipse"
 	id "maven-publish"
 	id "com.palantir.git-version" version "0.5.3"
-	id "de.abas.esdk" version "0.6.3"
+//	id "de.abas.esdk" version "0.6.7"
 	id "com.dorongold.task-tree" version "1.3"
 }
+
+apply plugin: "de.abas.esdk"
 
 buildScan {
 	licenseAgreementUrl = 'https://gradle.com/terms-of-service'
@@ -31,6 +50,7 @@ esdk {
 		shared = true
 		infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
 		tables = ["Replacement"]
+		screens = [["Replacement": "SparePart"]: ['A']]
 		data = ["data.json"]
 		keys = []
 		enums = ["FILE_FORMAT"]
