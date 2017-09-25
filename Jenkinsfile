@@ -1,4 +1,4 @@
-@Library('esdk-jenkins-lib@master') _
+@Library('esdk-jenkins-lib@ESDK-319-store-abas-essentials-version-c') _
 
 node {
 	timestamps {
@@ -8,6 +8,7 @@ node {
 					checkout scm
 					sh 'git clean -fdx'
 					prepareEnv()
+					rmDirInMavenLocal '​de/abas/esdk'
 					shInstallDockerCompose()
 					initGradleProps()
 					showGradleProps()
