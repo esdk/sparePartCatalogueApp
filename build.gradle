@@ -34,6 +34,7 @@ esdk {
 		data = ["data.json"]
 		keys = []
 		enums = ["FILE_FORMAT"]
+		essentialsVersions = ["2016r1n00-2016r4n16", "2017r1n00-2017r4n16"]
 		preconditions = ["version=201[6-7]r[1-4]n[\\d]{0,2}"]
 		preconditions = ["workDirs=ow1"]
 		languages = "DEA"
