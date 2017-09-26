@@ -1,12 +1,36 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		maven {
+			credentials {
+				username nexusUser
+				password nexusPassword
+			}
+			url esdkSnapshotURL
+		}
+		maven {
+			credentials {
+				username nexusUser
+				password nexusPassword
+			}
+			url esdkReleaseURL
+		}
+		jcenter()
+	}
+	dependencies {
+		classpath "de.abas.esdk:gradlePlugin:$version"
+	}
+}
+
 plugins {
 	id 'com.gradle.build-scan' version '1.8'
 	id "java"
 	id "eclipse"
 	id "maven-publish"
-	id "com.palantir.git-version" version "0.5.3"
-	id "de.abas.esdk" version "0.6.3"
 	id "com.dorongold.task-tree" version "1.3"
 }
+
+apply plugin: "de.abas.esdk"
 
 buildScan {
 	licenseAgreementUrl = 'https://gradle.com/terms-of-service'
@@ -17,7 +41,21 @@ repositories {
 	mavenLocal()
 	jcenter()
 	mavenCentral()
-	maven { url "http://" + NEXUS_HOST + ":" + NEXUS_PORT + "/nexus/content/repositories/" + NEXUS_NAME }
+	maven {
+		url esdkSnapshotURL
+		credentials {
+			username nexusUser
+			password nexusPassword
+		}
+	}
+	maven {
+		credentials {
+			username nexusUser
+			password nexusPassword
+		}
+		url esdkReleaseURL
+	}
+	maven { url "http://$NEXUS_HOST:$NEXUS_PORT/nexus/content/repositories/$NEXUS_NAME" }
 }
 
 esdk {
@@ -67,6 +105,12 @@ esdk {
 	installType = "SSH"
 }
 
+task printVersion() {
+	doLast {
+		println(version)
+	}
+}
+
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
@@ -75,15 +119,16 @@ compileJava {
 	options.encoding = "UTF-8"
 }
 
-configurations { compile.extendsFrom provided }
+configurations {
+	compile.extendsFrom provided
+	installer
+}
+
+configurations.installer {
+	resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+}
 
 group = 'de.abas.esdk.app'
-def versionString = gitVersion().toString()
-if (versionString.contains("-")) {
-	version versionString.split("-")[0].substring(1) + "-SNAPSHOT"
-} else {
-	version versionString.substring(1)
-}
 
 publishing {
 	publications {
@@ -96,7 +141,7 @@ publishing {
 	repositories {
 		if (project.hasProperty("esdkSnapshotURL") && project.hasProperty("esdkReleaseURL")
 				&& project.hasProperty("nexusUser") && project.hasProperty("nexusPassword")) {
-			if (project.version.endsWith('-SNAPSHOT')) {
+			if (version.endsWith('-SNAPSHOT')) {
 				maven {
 					url esdkSnapshotURL
 					credentials {
