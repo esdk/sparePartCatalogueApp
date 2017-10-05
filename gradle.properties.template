@@ -1,3 +1,5 @@
+version = 0.6.10-SNAPSHOT
+
 ABAS_HOMEDIR=/abas/s3
 ABAS_CLIENTDIR=/abas/erp1
 ABAS_CLIENTID=erp1
