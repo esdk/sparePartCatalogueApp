@@ -34,7 +34,7 @@ node {
 				stage('Installation') {
 					shGradle("checkPreconditions")
 					shGradle("publishHomeDirJars")
-					shGradle("fullInstall")
+					shGradle("fullInstall --refresh-dependencies")
 				}
 				stage('Build') {
 					shGradle("verify")
