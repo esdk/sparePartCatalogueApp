@@ -15,7 +15,6 @@ node {
 					sh 'git clean -fdx'
 					prepareEnv()
 					rmDirInMavenLocal '​de/abas/esdk'
-					shInstallDockerCompose()
 					initGradleProps()
 					showGradleProps()
 				}
