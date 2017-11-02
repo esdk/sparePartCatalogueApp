@@ -1,4 +1,4 @@
-@Library('esdk-jenkins-lib@master') _
+@Library('esdk-jenkins-lib@use-global-docker-compose') _
 
 node {
 	timestamps {
@@ -15,7 +15,6 @@ node {
 					sh 'git clean -fdx'
 					prepareEnv()
 					rmDirInMavenLocal '​de/abas/esdk'
-					shInstallDockerCompose()
 					initGradleProps()
 					showGradleProps()
 				}
