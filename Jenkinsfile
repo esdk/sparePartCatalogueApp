@@ -16,7 +16,6 @@ node {
 					prepareEnv()
 					rmDirInMavenLocal '​de/abas/esdk'
 					initGradleProps()
-					showGradleProps()
 				}
 				stage('Set version') {
 					updateEssentialsAppVersion(params.ESDK_VERSION, 'gradle.properties.template', params.BUILD_USER_PARAM, 'github.com/Tschasmine/sparePartCatalogueApp.git')
