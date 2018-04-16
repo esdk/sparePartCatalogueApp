@@ -20,3 +20,5 @@ SSH_PASSWORD=none
 SSH_KEY=
 
 installType=SSH
+
+version=0.6.10-SNAPSHOT
