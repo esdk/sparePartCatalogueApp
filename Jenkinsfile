@@ -27,12 +27,10 @@ node {
 						shDocker('login partner.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
 					}
 					shDockerComposeUp()
-					sleep 30
 				}
 				stage('Installation') {
 					shGradle("checkPreconditions")
-					shGradle("publishHomeDirJars")
-					shGradle("fullInstall --refresh-dependencies")
+					shGradle("fullInstall")
 				}
 				stage('Build') {
 					shGradle("verify")
