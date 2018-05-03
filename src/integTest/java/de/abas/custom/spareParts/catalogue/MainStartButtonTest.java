@@ -16,7 +16,7 @@ public class MainStartButtonTest extends AbstractTest implements CommandRunner {
 	public void startAfterNoFileTest() {
 		infosys.setFile("");
 		infosys.invokeStart();
-		assertThat(getMessage().contains("FOP: Please enter the import file location"), is(true));
+		assertThat(getMessage().contains("Please enter the import file location"), is(true));
 	}
 
 	@Test
