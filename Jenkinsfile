@@ -27,6 +27,7 @@ node {
 						shDocker('login partner.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
 					}
 					shDockerComposeUp()
+					installLanguages()
 				}
 				stage('Installation') {
 					shGradle("checkPreconditions")
@@ -55,4 +56,8 @@ node {
 			}
 		}
 	}
+}
+
+def installLanguages() {
+	sh "docker exec -t erp sh -c 'cd /abas/erp && eval \$(sh denv.sh) && echo \"KONFIG;y;y\" | edpimport.sh -psy -u -b 12:18 -f such,bse,bsa'"
 }
