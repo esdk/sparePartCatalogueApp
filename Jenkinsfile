@@ -24,15 +24,14 @@ node {
 				stage('Preparation') { // for display purposes
 					withCredentials([usernamePassword(credentialsId: '82305355-11d8-400f-93ce-a33beb534089',
 							passwordVariable: 'MAVENPASSWORD', usernameVariable: 'MAVENUSER')]) {
-						shDocker('login intra.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
+						shDocker('login partner.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
 					}
 					shDockerComposeUp()
-					sleep 30
+					installLanguages()
 				}
 				stage('Installation') {
 					shGradle("checkPreconditions")
-					shGradle("publishHomeDirJars")
-					shGradle("fullInstall --refresh-dependencies")
+					shGradle("fullInstall")
 				}
 				stage('Build') {
 					shGradle("verify")
@@ -57,4 +56,8 @@ node {
 			}
 		}
 	}
+}
+
+def installLanguages() {
+	sh "docker exec -t erp sh -c 'cd /abas/erp && eval \$(sh denv.sh) && echo \"KONFIG;y;y\" | edpimport.sh -psy -u -b 12:18 -f such,bse,bsa'"
 }
