@@ -97,6 +97,7 @@ timestamps {
 				}
 				stage("Release") {
 					justReplace(version, releaseVersion, 'gradle.properties.template')
+					justReplace(version, releaseVersion, 'gradle.properties')
 					String devVersion = readyForRelease.devVersion + '-SNAPSHOT'
 					printReleaseInfo(releaseVersion, devVersion, readyForRelease.answer)
 					String releaseText = "Releasing ${releaseVersion}\nnew dev version ${devVersion}"
@@ -106,8 +107,8 @@ timestamps {
 					shGradle("packAbasApp -x createAppJar")
 					s3Upload(
 							bucket: "abas-app-releases",
-							file: "build/abas-app/sparePartCatalogueApp-abasApp-${version}.zip",
-							path: "sparePartCatalogueApp-abasApp-${version}.zip",
+							file: "build/abas-app/sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
+							path: "sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
 							pathStyleAccessEnabled: true,
 							cacheControl: 'max-age=0',
 							acl: 'Private'
