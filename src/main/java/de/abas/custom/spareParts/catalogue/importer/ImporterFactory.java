@@ -2,17 +2,17 @@ package de.abas.custom.spareParts.catalogue.importer;
 
 import de.abas.custom.spareParts.catalogue.util.Util;
 import de.abas.erp.axi.event.EventException;
-import de.abas.erp.db.schema.userenums.UserEnumImportfileformat;
+import de.abas.erp.db.schema.userenums.UserEnumSpareImportFileFormat;
 
 public class ImporterFactory {
 
-	public static Importer newInstance(UserEnumImportfileformat format) throws EventException {
-		if (format.equals(UserEnumImportfileformat.CSV)) {
+	public static Importer newInstance(UserEnumSpareImportFileFormat format) throws EventException {
+		if (format.equals(UserEnumSpareImportFileFormat.SPARE_CSV)) {
 			return new CSVImporter();
 		}
 
 		String fileFormats = "";
-		for (UserEnumImportfileformat fileFormat : UserEnumImportfileformat.values()) {
+		for (UserEnumSpareImportFileFormat fileFormat : UserEnumSpareImportFileFormat.values()) {
 			fileFormats = fileFormat + ", ";
 		}
 		throw new EventException(
