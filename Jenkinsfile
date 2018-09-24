@@ -105,9 +105,10 @@ timestamps {
 
 					shGradle("publish")
 					shGradle("packAbasApp -x createAppJar")
+					def abasApp = sh returnStdout: true, script: "ls build/abas-app/ | grep 'abasApp-$releaseVersion'"
 					s3Upload(
 							bucket: "abas-app-releases",
-							file: "build/abas-app/sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
+							file: "build/abas-app/$abasApp",
 							path: "sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
 							pathStyleAccessEnabled: true,
 							cacheControl: 'max-age=0',
