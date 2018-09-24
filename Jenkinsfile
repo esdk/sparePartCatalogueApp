@@ -102,8 +102,8 @@ timestamps {
 					String releaseText = "Releasing ${releaseVersion}\nnew dev version ${devVersion}"
 					currentBuild.description = releaseText + '\nrelease commit, publishing artifacts...'
 
-					shGradle("gradle publish")
-					shGradle("gradle packAbasApp -x createAppJar")
+					shGradle("publish")
+					shGradle("packAbasApp -x createAppJar")
 					withAWS(credentials: '07d490a3-c053-4108-960f-458307e91742', region: "us-east-1") {
 						s3Upload(
 								bucket: "abas-app-releases",
