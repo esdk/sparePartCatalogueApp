@@ -1,0 +1,10 @@
+== Installation
+
+The Spare Part Catalogue App is a free marketplace app.
+
+In the abas client you want to install the Spare Part Catalogue App in run the following command:
+
+[source,shell]
+----
+abas-app-installer -a https://s3.amazonaws.com/abas-app-releases/spare/{productVersion}/sparePartCatalogueApp-{productVersion}-app.jar
+----

@@ -1,0 +1,19 @@
+:docinfo:
+= Spare Part Catalogue App
+Documentation
+:nofooter:
+
+This document describes the https://github.com/Tschasmine/sparePartCatalogueApp/[Spare Part Catalogue App].
+
+include::introduction.adoc[]
+
+include::installation.adoc[]
+
+include::functionality.adoc[]
+
+== About
+
+Spare Part Catalogue App +
+(C) abas Software AG
+
+https://abas-essentials-sdk.com/
