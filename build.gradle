@@ -85,7 +85,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			groupId 'de.abas.esdk.app'
-			artifactId 'abasag-sparePartsCatalogue'
+			artifactId 'sparePartCatalogue'
 			artifact createAppJar
 		}
 	}
