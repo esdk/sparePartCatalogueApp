@@ -107,14 +107,16 @@ timestamps {
 					shGradle("packAbasApp -x createAppJar")
 					def abasApp = sh returnStdout: true, script: "ls build/abas-app/ | grep 'abasApp-$releaseVersion'"
 					abasApp = abasApp.trim()
-					s3Upload(
-							bucket: "abas-apps",
-							file: "build/abas-app/$abasApp",
-							path: "sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
-							pathStyleAccessEnabled: true,
-							cacheControl: 'max-age=0',
-							acl: 'Private'
-					)
+					withAWS(credentials: 'e4ec24aa-35e1-4650-a4bd-6d9b06654e9b', region: "us-east-1") {
+						s3Upload(
+								bucket: "abas-apps",
+								file: "build/abas-app/$abasApp",
+								path: "sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
+								pathStyleAccessEnabled: true,
+								cacheControl: 'max-age=0',
+								acl: 'Private'
+						)
+					}
 					build job: 'esdk/abasAppTestBucketScan', parameters: [string(name: 'INSTALLER_VERSION', value: "$version")], wait: false
 
 					shGitCommitRelease("gradle.properties.template", releaseVersion, readyForRelease.answer, BUILD_ID)
