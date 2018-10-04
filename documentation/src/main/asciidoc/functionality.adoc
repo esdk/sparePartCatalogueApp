@@ -1,0 +1,28 @@
+== Functionality
+
+The following chapters describe the different components of the Spare Part Catalogue App in a bit more detail.
+
+=== Infosystem REPLACEMENTCATALOGUE
+
+The Infosystem `REPLACEMENTCATALOGUE` looks like this:
+
+image::IS-empty.png[]
+
+You can specify the example csv file `ow1/test.csv` and run the Infosystem.
+The Infosystem will then display all spare parts found in the csv file.
+
+image::test-file-IS.png[]
+
+You can choose to import any one of the spare parts shown in the infosystem's table:
+
+image::import-IS.png[]
+
+=== Additional Table Replacement
+
+Spare parts imported by the Infosystem `REPLACEMENTCATALOGUE` can be found in the `Replacement` database.
+
+image::replacement.png[]
+
+You can then specify to what product this spare part belongs to:
+
+image::replacement-part.png[]

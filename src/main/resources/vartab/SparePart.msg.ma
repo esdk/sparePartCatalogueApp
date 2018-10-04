@@ -1,6 +1,6 @@
 " VERSION 2
 "******** screens/screen_108/a/Resources.language ********"
-      1 de   |Product
+      1 de   |Artikel
       1 en   |Product
       1 en-US|Product
       2 de   |Identnummer
@@ -9,7 +9,7 @@
       3 de   |Suchwort
       3 en   |Search word
       3 en-US|Search word
-      4 de   |Zuletzt geändert
+      4 de   |Zuletzt editiert
       4 en   |Last changed
       4 en-US|Last changed
       5 de   |Datum

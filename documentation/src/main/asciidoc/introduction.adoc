@@ -1,0 +1,9 @@
+== Introduction
+
+The Spare Part Catalogue App is an abas App by the abas Essentials SDK team to demonstrate the usage of ESDK for abas App development.
+
+It consists of an Infosystem `REPLACEMENTCATALOGUE`, an additonal variable table `Replacement`, a custom database screen for
+the `Replacement` database, an enumeration `SPARE_FILE_FORMAT` and a file `test.csv`.
+
+The Spare Part Catalogue App can display replacement catalogues provided in CSV format in the Infosystem `REPLACEMENTCATALOGUE`.
+It can also import replacement parts in into the additional database `Replacement`.

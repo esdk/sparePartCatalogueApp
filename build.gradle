@@ -3,7 +3,7 @@ plugins {
 	id "java"
 	id "eclipse"
 	id "maven-publish"
-	id "de.abas.esdk" version "0.10.0"
+	id "de.abas.esdk" version "0.10.12"
 	id "com.dorongold.task-tree" version "1.3"
 }
 
@@ -13,8 +13,6 @@ buildScan {
 }
 
 repositories {
-	mavenLocal()
-	jcenter()
 	maven { url "http://$NEXUS_HOST:$NEXUS_PORT/nexus/content/repositories/$NEXUS_NAME-SNAPSHOT" }
 	maven { url "http://$NEXUS_HOST:$NEXUS_PORT/nexus/content/repositories/$NEXUS_NAME" }
 }
@@ -27,10 +25,8 @@ esdk {
 		shared = true
 		infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
 		tables = ["Replacement"]
-		data = ["data.json"]
-		keys = []
 		enums = ["FILE_FORMAT"]
-		essentialsVersions = ["2016r1n00-2016r4n16", "2017r1n00-2017r4n16", "2018r1n00-2018r4n16"]
+		essentialsVersions = ["2016r4n13-2016r4n16", "2017r1n00-2017r4n16"]
 		preconditions = ["workDirs=ow1"]
 		workdirs = [ "ow1" ]
 		languages = "DEA"
@@ -63,22 +59,13 @@ esdk {
 	installType = "SSH"
 }
 
-task printVersion() {
-	doLast {
-		println(version)
+gradle.taskGraph.whenReady {
+	abasAppDocumentation {
+		attributes 'productVersion': version.split("-")[0]
 	}
 }
 
-tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
-}
-
-compileJava {
-	options.encoding = "UTF-8"
-}
-
 configurations {
-	compile.extendsFrom provided
 	installer
 }
 
@@ -92,7 +79,7 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			groupId 'de.abas.esdk.app'
-			artifactId 'abasag-sparePartsCatalogue'
+			artifactId 'sparePartCatalogue'
 			artifact createAppJar
 		}
 	}

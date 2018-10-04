@@ -38,7 +38,7 @@
             <cells row="1" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="24da4a9a-1e35-4d19-ba84-303baefc2704">
-                  <value key="de" value="Description"/>
+                  <value key="de" value="Beschreibung"/>
                 </label>
               </elements>
             </cells>
@@ -50,7 +50,7 @@
             <cells row="2" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="80b88b57-bc2f-4d4c-acaf-74e6df761721">
-                  <value key="de" value="Vendor"/>
+                  <value key="de" value="Lieferant"/>
                 </label>
               </elements>
             </cells>
@@ -62,7 +62,7 @@
             <cells column="2" row="2" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="18284446-2026-445d-8c5c-34848caa0ed0">
-                  <value key="de" value="Price"/>
+                  <value key="de" value="Preis"/>
                 </label>
               </elements>
             </cells>
@@ -74,7 +74,7 @@
             <cells row="3" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="31c34fd7-4579-44cb-9204-3ad38fa91459">
-                  <value key="de" value="Product no vendor"/>
+                  <value key="de" value="Produktnummer des Lieferanten"/>
                 </label>
               </elements>
             </cells>
@@ -86,7 +86,7 @@
             <cells column="2" row="3" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="dc143c4c-9d92-462d-bade-4b082ea79601">
-                  <value key="de" value="Matchcode of product"/>
+                  <value key="de" value="Matchcode"/>
                 </label>
               </elements>
             </cells>
@@ -98,7 +98,7 @@
             <cells row="4" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="7b719edf-44ac-4c8b-abd4-56b56d1d0734">
-                  <value key="de" value="Date"/>
+                  <value key="de" value="Datum"/>
                 </label>
               </elements>
             </cells>
@@ -110,7 +110,7 @@
             <cells column="2" row="4" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="8453d0e0-7868-4eec-9c3c-d01e9d73b9a6">
-                  <value key="de" value="Last changed"/>
+                  <value key="de" value="Zuletzt editiert"/>
                 </label>
               </elements>
             </cells>
@@ -122,7 +122,7 @@
             <cells row="5" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="9fa77a55-245e-43bd-9126-0388d6892c57">
-                  <value key="de" value="Transferred"/>
+                  <value key="de" value="Angelegt"/>
                 </label>
               </elements>
             </cells>
@@ -134,7 +134,7 @@
             <cells column="2" row="5" alignmentY="center">
               <elements xsi:type="core:Label">
                 <label viewLanguage="de" key="7c436d95-1f18-4ade-a77f-b678bbd14651">
-                  <value key="de" value="Signature"/>
+                  <value key="de" value="Signatur"/>
                 </label>
               </elements>
             </cells>
@@ -153,7 +153,7 @@
                 <variable englishName="ysparecorrproduct" name="ysparecorrproduct" type="P2:1" guiType="REFERENCE" description="" tableEntry="true" width="16" screenProtection="&#xe4;nderbar" writeable="true" custom="true" meaning="Corresponding product" changePriority="A" viewPriority="A" primaryName="ysparecorrproduct"/>
               </elements>
               <label viewLanguage="de" key="48d574a8-12a9-45da-bd34-1d3595d3298f">
-                <value key="de" value="Corresponding product"/>
+                <value key="de" value="Artikel"/>
               </label>
             </elements>
           </elements>

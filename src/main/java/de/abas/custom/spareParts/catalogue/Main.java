@@ -23,7 +23,7 @@ import de.abas.erp.db.field.editable.EditableField;
 import de.abas.erp.db.field.editable.EditableReferenceField;
 import de.abas.erp.db.field.editable.EditableStringField;
 import de.abas.erp.db.infosystem.custom.ow1.ReplacementCatalogue;
-import de.abas.erp.db.schema.userenums.UserEnumImportfileformat;
+import de.abas.erp.db.schema.userenums.UserEnumSpareImportFileFormat;
 import de.abas.erp.db.schema.vendor.Vendor;
 import de.abas.erp.jfop.rt.api.annotation.RunFopWith;
 
@@ -34,14 +34,14 @@ public class Main {
 	@FieldEventHandler(field = "file", type = FieldEventType.EXIT)
 	public void fileExit(ReplacementCatalogue infosys) {
 		final String[] file = infosys.getFile().split("\\.");
-		infosys.setFormat("csv".equals(file[file.length - 1].toLowerCase()) ? UserEnumImportfileformat.CSV : UserEnumImportfileformat.Undefined);
+		infosys.setFormat("csv".equals(file[file.length - 1].toLowerCase()) ? UserEnumSpareImportFileFormat.SPARE_CSV : UserEnumSpareImportFileFormat.Undefined);
 
 	}
 
 	@ScreenEventHandler(type = ScreenEventType.ENTER)
 	public void screenEnter(ReplacementCatalogue infosys) {
 		infosys.table().clear();
-		infosys.setFormat(UserEnumImportfileformat.CSV);
+		infosys.setFormat(UserEnumSpareImportFileFormat.SPARE_CSV);
 	}
 
 	@ButtonEventHandler(field = "start", type = ButtonEventType.AFTER)
