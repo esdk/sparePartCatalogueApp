@@ -51,7 +51,7 @@ timestamps {
 				}
 				onMaster {
 					stage('Publish') {
-						shGradle("gradle publish -x fullInstall -x createApp -x jar -x copyIS -x createWorkdirs -x processResources -x importEnums -x importNamedTypes")
+						shGradle("publish -x fullInstall -x createApp -x jar -x copyIS -x createWorkdirs -x processResources -x importEnums -x importNamedTypes")
 					}
 				}
 			} catch (any) {
