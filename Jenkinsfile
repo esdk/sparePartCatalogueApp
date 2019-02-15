@@ -1,5 +1,16 @@
 @Library('esdk-jenkins-lib@master') _
 
+/**
+ * This is the Jenkinsfile used by the ESDK team to build, test and release this demo app.
+ *
+ * It makes use of an internal Jenkins Pipeline library (esdk-jenkins-lib) and is not intended to be part of the demo.
+ * To get a more simple demo Jenkinsfile for building and testing your app against an abas ERP docker container,
+ * please use the
+ *
+ *  ESDK Project Builder: https://dev.abas-essentials-sdk.com/#/project-builder
+ *
+ */
+
 def version
 def releaseVersion
 def prefix = 'spare'
@@ -30,7 +41,7 @@ timestamps {
 				stage('Preparation') { // for display purposes
 					withCredentials([usernamePassword(credentialsId: '82305355-11d8-400f-93ce-a33beb534089',
 							passwordVariable: 'MAVENPASSWORD', usernameVariable: 'MAVENUSER')]) {
-						shDocker('login partner.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
+						shDocker('login sdp.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
 					}
 					shDockerComposeUp()
 					parallel(
@@ -85,7 +96,7 @@ timestamps {
 						shGitCheckoutReleaseBranch()
 						withCredentials([usernamePassword(credentialsId: '82305355-11d8-400f-93ce-a33beb534089',
 								passwordVariable: 'MAVENPASSWORD', usernameVariable: 'MAVENUSER')]) {
-							shDocker('login partner.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
+							shDocker('login sdp.registry.abas.sh -u $MAVENUSER -p $MAVENPASSWORD')
 						}
 						shDockerComposeUp()
 						parallel(
