@@ -118,12 +118,12 @@ timestamps {
 
 						shGradle("publish")
 						shGradle("packAbasApp -x createAppJar")
-						def abasApp = sh returnStdout: true, script: "ls build/abas-app/ | grep 'abasApp-$releaseVersion'"
+						def abasApp = sh returnStdout: true, script: "ls build/esdk-app/ | grep 'esdkApp-$releaseVersion'"
 						abasApp = abasApp.trim()
 						withAWS(credentials: 'e4ec24aa-35e1-4650-a4bd-6d9b06654e9b', region: "us-east-1") {
 							s3Upload(
 									bucket: "abas-apps",
-									file: "build/abas-app/$abasApp",
+									file: "build/esdk-app/$abasApp",
 									path: "sparePartCatalogueApp-abasApp-${releaseVersion}.zip",
 									pathStyleAccessEnabled: true,
 									cacheControl: 'max-age=0',
