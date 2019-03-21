@@ -1,26 +1,29 @@
 package de.abas.custom.spareParts.catalogue;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import de.abas.custom.spareParts.catalogue.utils.CommandRunner;
+import de.abas.erp.db.infosystem.custom.ow1.ReplacementCatalogue;
+import de.abas.esdk.test.util.DoNotFailOnError;
+import de.abas.esdk.test.util.EsdkIntegTest;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import org.junit.Test;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
-import de.abas.custom.spareParts.catalogue.utils.AbstractTest;
-import de.abas.custom.spareParts.catalogue.utils.CommandRunner;
+public class MainStartButtonTest extends EsdkIntegTest implements CommandRunner {
 
-public class MainStartButtonTest extends AbstractTest implements CommandRunner {
+	ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
 
+	@DoNotFailOnError(message = "ERROR_MESSAGE Cat=ERROR: Please enter the import file location.")
 	@Test
 	public void startAfterNoFileTest() {
 		infosys.setFile("");
 		infosys.invokeStart();
-		assertThat(getMessage().contains("Please enter the import file location"), is(true));
 	}
 
 	@Test
-	public void startAfterTest() throws Exception {
+	public void startAfterTest() {
 		infosys.setFile("ow1/test.csv");
 		infosys.invokeStart();
 

@@ -1,19 +1,5 @@
 package de.abas.custom.spareParts.catalogue;
 
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
-
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import org.junit.Test;
-
-import de.abas.custom.spareParts.catalogue.utils.AbstractTest;
 import de.abas.erp.common.type.AbasDate;
 import de.abas.erp.db.infosystem.custom.ow1.ReplacementCatalogue;
 import de.abas.erp.db.schema.custom.replacement.SparePart;
@@ -22,23 +8,43 @@ import de.abas.erp.db.schema.vendor.Vendor;
 import de.abas.erp.db.schema.vendor.VendorEditor;
 import de.abas.erp.db.selection.Conditions;
 import de.abas.erp.db.selection.SelectionBuilder;
+import de.abas.esdk.test.util.EsdkIntegTest;
+import de.abas.esdk.test.util.TestData;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-public class MainImportButtonTest extends AbstractTest {
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
+
+public class MainImportButtonTest extends EsdkIntegTest {
 
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("dd/MM/yy");
-	private Vendor vendor;
+	private Vendor vendor = TestData.selectData(ctx, Vendor.class, Vendor.META.swd, "TEST").get(0);
 	private SparePart sparePart;
 
-	@Override
-	public void cleanup() {
+	ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
+
+	@After
+	public void tidyUp() {
 		infosys.abort();
 		if (sparePart != null) {
 			sparePart.delete();
 		}
-		if (vendor != null) {
-			vendor.delete();
-		}
-		super.cleanup();
+	}
+
+	@AfterClass
+	public static void cleanup() {
+		TestData.deleteData(ctx, Vendor.class, Vendor.META.swd, "TEST");
 	}
 
 	@Test
@@ -128,20 +134,16 @@ public class MainImportButtonTest extends AbstractTest {
 
 	}
 
-	@Override
-	public void setup() {
-		super.setup();
+	@BeforeClass
+	public static void createTestData() {
 		createVendor();
 
 	}
 
-	private void createVendor() {
-		infosys.abort();
+	private static void createVendor() {
 		final VendorEditor vendor = ctx.newObject(VendorEditor.class);
 		vendor.setSwd("TEST");
 		vendor.commit();
-		this.vendor = vendor.objectId();
-		infosys = ctx.openInfosystem(ReplacementCatalogue.class);
 	}
 
 	private Date yesterday() {
