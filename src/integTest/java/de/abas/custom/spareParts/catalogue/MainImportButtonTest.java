@@ -35,7 +35,7 @@ public class MainImportButtonTest extends EsdkIntegTest {
 	private ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
 
 	@BeforeClass
-	private static void createVendor() {
+	public static void createVendor() {
 		final VendorEditor vendor = ctx.newObject(VendorEditor.class);
 		vendor.setSwd("TEST");
 		vendor.commit();
