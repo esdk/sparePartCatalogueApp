@@ -91,7 +91,7 @@ public class MainImportButtonTest extends EsdkIntegTest {
 	}
 
 	@Test
-	public void importUpdateTest() throws Exception {
+	public void importUpdateTest() {
 		final SparePartEditor editor = ctx.newObject(SparePartEditor.class);
 		editor.setSwd("TEST");
 		editor.setYsparematchcode("ET1234");
