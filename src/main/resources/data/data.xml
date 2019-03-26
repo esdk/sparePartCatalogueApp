@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ABASData>
+    <RecordSet tableNumber="12:26" tableName="Firma:Vartab" identifier="vgrtxt14" standard="true" importOnce="false" importMode="normal">
+        <Record id="(250,12,0)">
+            <Head>
+                <Field name="id" abasType="ID12">(250,12,0)</Field>
+                <Field name="vgrtxt14" abasType="GL40">SparePart</Field>
+            </Head>
+        </Record>
+    </RecordSet>
     <RecordSet tableNumber="87:9" tableName="Datenexport:Aufrufparameter" identifier="guid" standard="false" importOnce="false" importMode="normal">
         <Record id="(33288,87,0)">
             <Head>
                 <Field name="id" abasType="ID87">(33288,87,0)</Field>
                 <Field name="guid" abasType="GLA38">0489bbd0-3e5c-4f60-a5d6-8eac5150beee</Field>
-                <Field name="such" abasType="SWK87">V-02-01</Field>
+                <Field name="such" abasType="SWK87">REPL_SPAREPART</Field>
                 <Field name="zielobj" abasType="VID12">(631,65,0)</Field>
                 <Field name="kontexttyp" abasType="A267">Einzelne Variablentabelle</Field>
-                <Field name="aufrktxt" abasType="VID13">(267,12,0)</Field>
+                <Field name="aufrktxt" abasType="VID13">(250,12,0)</Field>
             </Head>
             <Row number="1">
                 <Field name="zid" abasType="IDZ87:9">(33288,87,0,1)</Field>
@@ -17,14 +25,6 @@
                 <Field name="aufrwtyp" abasType="A150">Kopffeld</Field>
                 <Field name="aufrwert" abasType="GL200">ysparevendor</Field>
             </Row>
-        </Record>
-    </RecordSet>
-    <RecordSet tableNumber="12:26" tableName="Firma:Vartab" identifier="vgrtxtbspr" standard="true" importOnce="false" importMode="normal">
-        <Record id="(267,12,0)">
-            <Head>
-                <Field name="id" abasType="ID12">(267,12,0)</Field>
-                <Field name="vgrtxtbspr" abasType="GL40">SparePart</Field>
-            </Head>
         </Record>
     </RecordSet>
     <RecordSet tableNumber="65:1" tableName="Infosystem:Infosystem" identifier="classname" standard="true" importOnce="false" importMode="normal">

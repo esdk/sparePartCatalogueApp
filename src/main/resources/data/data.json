@@ -5,16 +5,16 @@
       "grnr" : 9,
       "headfields" : [ "id", "guid", "such", "zielobj", "kontexttyp", "aufrktxt" ],
       "tablefields" : [ "zid", "zielaktion", "zielvar", "aufrwtyp", "aufrwert" ],
-      "criteria" : "nummer==100268"
+      "criteria" : "such==REPL_SPAREPART"
     }
   ],
   "dependents" : [
     {
       "dbnr" : 12,
       "grnr" : 26,
-      "identifier" : "vgrtxtbspr",
+      "identifier" : "vgrtxt14",
       "standard" : true,
-      "headfields" : [ "id", "vgrtxtbspr" ],
+      "headfields" : [ "id", "vgrtxt14" ],
       "tablefields" : []
     },
     {
