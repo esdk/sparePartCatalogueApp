@@ -1,0 +1,29 @@
+{
+  "roots" : [
+    {
+      "dbnr" : 87,
+      "grnr" : 9,
+      "headfields" : [ "id", "guid", "such", "zielobj", "kontexttyp", "aufrktxt" ],
+      "tablefields" : [ "zid", "zielaktion", "zielvar", "aufrwtyp", "aufrwert" ],
+      "criteria" : "nummer==100268"
+    }
+  ],
+  "dependents" : [
+    {
+      "dbnr" : 12,
+      "grnr" : 26,
+      "identifier" : "vgrtxtbspr",
+      "standard" : true,
+      "headfields" : [ "id", "vgrtxtbspr" ],
+      "tablefields" : []
+    },
+    {
+      "dbnr" : 65,
+      "grnr" : 1,
+      "standard" : true,
+      "identifier" : "classname",
+      "headfields" : [ "id", "classname" ],
+      "tablefields" : []
+    }
+  ]
+}
