@@ -14,6 +14,7 @@ services:
       - "${MINI_GUI_PORT:-8001}:80"
       - "${EDP_TEST_PORT:-6560}:6550"
       - "${GUI_TEST_PORT:-48592}:48392"
+      - "9014:9014"
 
       environment:
       - ABAS_HOST
