@@ -8,18 +8,22 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class MainStartButtonTest extends EsdkIntegTest implements CommandRunner {
 
+	private static final String FILE_LOCATION_ERROR = "ERROR_MESSAGE Cat=ERROR: Please enter the import file location.";
+
 	ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
 
-	@DoNotFailOnError(message = "ERROR_MESSAGE Cat=ERROR: Please enter the import file location.")
+	@DoNotFailOnError(message = FILE_LOCATION_ERROR)
 	@Test
 	public void startAfterNoFileTest() {
 		infosys.setFile("");
 		infosys.invokeStart();
+		assertThat(getErrors(), contains(FILE_LOCATION_ERROR));
 	}
 
 	@Test
