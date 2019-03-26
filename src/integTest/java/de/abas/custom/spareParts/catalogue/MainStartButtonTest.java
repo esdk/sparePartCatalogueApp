@@ -16,7 +16,7 @@ public class MainStartButtonTest extends EsdkIntegTest implements CommandRunner 
 
 	private static final String FILE_LOCATION_ERROR = "ERROR_MESSAGE Cat=ERROR: Please enter the import file location.";
 
-	ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
+	private ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
 
 	@DoNotFailOnError(message = FILE_LOCATION_ERROR)
 	@Test

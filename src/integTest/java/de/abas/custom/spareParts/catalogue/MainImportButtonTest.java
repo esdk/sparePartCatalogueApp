@@ -32,7 +32,19 @@ public class MainImportButtonTest extends EsdkIntegTest {
 	private Vendor vendor = TestData.selectData(ctx, Vendor.class, Vendor.META.swd, "TEST").get(0);
 	private SparePart sparePart;
 
-	ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
+	private ReplacementCatalogue infosys = ctx.openInfosystem(ReplacementCatalogue.class);
+
+	@BeforeClass
+	private static void createVendor() {
+		final VendorEditor vendor = ctx.newObject(VendorEditor.class);
+		vendor.setSwd("TEST");
+		vendor.commit();
+	}
+
+	@AfterClass
+	public static void cleanup() {
+		TestData.deleteData(ctx, Vendor.class, Vendor.META.swd, "TEST");
+	}
 
 	@After
 	public void tidyUp() {
@@ -40,11 +52,6 @@ public class MainImportButtonTest extends EsdkIntegTest {
 		if (sparePart != null) {
 			sparePart.delete();
 		}
-	}
-
-	@AfterClass
-	public static void cleanup() {
-		TestData.deleteData(ctx, Vendor.class, Vendor.META.swd, "TEST");
 	}
 
 	@Test
@@ -132,18 +139,6 @@ public class MainImportButtonTest extends EsdkIntegTest {
 				is(DATE_FORMATTER.format(new AbasDate().toDate())));
 		assertThat(sparePart.getYsparesigned(), is(not("")));
 
-	}
-
-	@BeforeClass
-	public static void createTestData() {
-		createVendor();
-
-	}
-
-	private static void createVendor() {
-		final VendorEditor vendor = ctx.newObject(VendorEditor.class);
-		vendor.setSwd("TEST");
-		vendor.commit();
 	}
 
 	private Date yesterday() {
