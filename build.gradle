@@ -110,18 +110,22 @@ publishing {
 dependencies {
 	provided 'de.abas.homedir:log4j:1.0.0'
 	provided "de.abas.homedir:abas-db-base:1.0.0"
-	provided "de.abas.homedir:abas-db-util:1.0.0"
-	provided "de.abas.homedir:abas-jfop-base:1.0.0"
+	provided 'de.abas.homedir:jedp:1.0.0'
 	provided "de.abas.homedir:abas-jfop-runtime-api:1.0.0"
 	provided "de.abas.homedir:abas-jfopapi:1.0.0"
 	provided "de.abas.homedir:abas-erp-common:1.0.0"
 	provided "de.abas.homedir:abas-enums:1.0.0"
 
+	implementation "de.abas.homedir:abas-jfop-base:1.0.0"
+	implementation "de.abas.homedir:abas-db-util:1.0.0"
 	implementation "de.abas.homedir:abas-axi2:1.0.0"
 	implementation "de.abas.homedir:abas-axi:1.0.0"
 	implementation "de.abas.homedir:abas-db-internal:1.0.0"
+	implementation "de.abas.clientdir:abas-db-index:1.0.0-SNAPSHOT"
 	implementation "de.abas.clientdir:abas-db:1.0.0-SNAPSHOT"
 	implementation "de.abas.clientdir:abas-db-infosys:1.0.0-SNAPSHOT"
+
+	runtime "de.abas.homedir:commons-collections:1.0.0"
 
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.hamcrest:hamcrest-all:1.3'
