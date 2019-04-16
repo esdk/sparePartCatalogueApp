@@ -6,7 +6,7 @@ services:
     # ssh in den Container:   ssh localhost -l s3 -p 2205 -i docker_erp.key
     #
     erp:
-      image: sdp.registry.abas.sh/abas/test:2017r4n16
+      image: sdp.registry.abas.sh/abas/test:2017r4n16p02
       container_name: "erp"
 
       ports:
