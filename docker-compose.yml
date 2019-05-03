@@ -27,8 +27,8 @@ services:
     command: run
 
     # nexus for publishing abas Essentials libraries
-    nexus:
-      image: sonatype/nexus:oss
-      container_name: "nexus"
-      ports:
-        - "${NEXUS_TEST_PORT:-8081}:8081"
+  nexus:
+    image: sonatype/nexus:oss
+    container_name: "nexus"
+    ports:
+      - "${NEXUS_TEST_PORT:-8081}:8081"
