@@ -26,6 +26,7 @@ timestamps {
 				])
 				stage('Setup') {
 					checkout scm
+					gitSetUser()
 					sh "git reset --hard origin/$BRANCH_NAME"
 					sh 'git clean -fdx'
 					prepareEnv()
@@ -88,6 +89,7 @@ timestamps {
 					milestone label: "release-started"
 					stage("Prepare Release") {
 						checkout scm
+						gitSetUser()
 						sh "git reset --hard origin/$BRANCH_NAME"
 						sh 'git clean -fdx'
 						prepareEnv()
