@@ -1,0 +1,63 @@
+image: openjdk:8
+
+options:
+  docker: true
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+  steps:
+    - step: &pluginBuildStep
+        name: Build & Test
+        services:
+          - docker
+        script:
+          - chmod a+x initGradleProperties.sh
+          - DOCKER_ENV_HOST=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') ./initGradleProperties.sh
+          - cat gradle.properties
+          - echo mavenUser=$MAVEN_USERNAME >> gradle.properties
+          - echo mavenPassword=$MAVEN_PASSWORD >> gradle.properties
+          - docker login sdp.registry.abas.sh -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD
+          - curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          - chmod +x /usr/local/bin/docker-compose
+          - docker-compose up -d
+          - ./gradlew createEsdkApp
+          - ./gradlew verify
+        artifacts:
+          - build/**
+    - step: &installerBuildStep
+        name: ESDK App Installer Test
+        services:
+          - docker
+        script:
+          - chmod a+x initGradleProperties.sh
+          - DOCKER_ENV_HOST=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') ./initGradleProperties.sh
+          - echo mavenUser=$MAVEN_USERNAME >> gradle.properties
+          - echo mavenPassword=$MAVEN_PASSWORD >> gradle.properties
+          - docker login sdp.registry.abas.sh -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD
+          - curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          - chmod +x /usr/local/bin/docker-compose
+          - docker-compose up -d
+          - ./gradlew installEsdkApp
+        artifacts:
+          - build/**
+
+pipelines:
+  default:
+    - step: *pluginBuildStep
+    - step: *installerBuildStep
+  branches:
+    master:
+      - step: *pluginBuildStep
+      - step: *installerBuildStep
+      - step:
+          name: Publish
+          script:
+            - chmod a+x initGradleProperties.sh
+            - DOCKER_ENV_HOST=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') ./initGradleProperties.sh
+            - echo mavenUser=$MAVEN_USERNAME >> gradle.properties
+            - echo mavenPassword=$MAVEN_PASSWORD >> gradle.properties
+            - ./gradlew publish -x fullInstall
+
+
