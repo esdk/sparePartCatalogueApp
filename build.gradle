@@ -20,7 +20,7 @@ esdk {
 		infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
 		tables = ["Replacement"]
 		enums = ["FILE_FORMAT"]
-		essentialsVersions = ["2016r4n13-2016r4n16", "2017r1n00-2017r4n16"]
+		essentialsVersions = ["2016r4n13-2016r4n16", "2017r1n00-2017r4n16", "2018r4-2018r4"]
 		preconditions = ["workDirs=ow1"]
 		data = ["data.json"]
 		workdirs = [ "ow1" ]
