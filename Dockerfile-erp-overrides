@@ -1,5 +1,0 @@
-FROM sdp.registry.abas.sh/abas/test:2018r4n14p19
-
-USER root
-# Disable DNS lookup in sshd.
-RUN echo 'UseDNS no' >> /etc/ssh/sshd_config
