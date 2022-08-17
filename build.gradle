@@ -2,7 +2,7 @@ plugins {
 	id "java"
 	id "eclipse"
 	id "maven-publish"
-	id "de.abas.esdk" version "0.13.2"
+	id "de.abas.esdk" version "1.2.6"
 }
 
 repositories {
@@ -122,7 +122,7 @@ dependencies {
 	implementation "de.abas.clientdir:abas-db-index:1.0.0-SNAPSHOT"
 	implementation "de.abas.clientdir:abas-db-infosys:1.0.0-SNAPSHOT"
 
-	runtime "de.abas.homedir:commons-collections:1.0.0"
+	implementation  "de.abas.homedir:commons-collections:1.0.0"
 
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.hamcrest:hamcrest-all:1.3'
