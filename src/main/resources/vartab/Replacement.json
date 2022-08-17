@@ -1,0 +1,83 @@
+{
+  "name": "Replacement",
+  "number": 25,
+  "isMasterData": false,
+  "classname": "Replacement",
+  "groups": [{
+    "name": "SparePart",
+    "number": 0,
+    "classname": "",
+    "headFields": [{
+      "name": "vendor",
+      "type": "PS1:1",
+      "description": "Vendor",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "productno",
+      "type": "GL30",
+      "description": "Product no vendor",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "matchcode",
+      "type": "GL30",
+      "description": "Matchcode of product",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "descr",
+      "type": "GL40",
+      "description": "Description",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "price",
+      "type": "R6.2",
+      "description": "Price",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "signed",
+      "type": "GL30",
+      "description": "Signature",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "date",
+      "type": "GD19",
+      "description": "Date",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "transferred",
+      "type": "B",
+      "description": "Transferred",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }, {
+      "name": "changed",
+      "type": "GD19",
+      "description": "Last changed",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }],
+    "tableFields": [{
+      "name": "corrproduct",
+      "type": "P2:1",
+      "description": "Corresponding product",
+      "screenVisibility": "Editable",
+      "showPriority": "A",
+      "changePriority": "A"
+    }]
+  }]
+}
