@@ -24,10 +24,3 @@ services:
       user: s3
       hostname: dockerbau
       command: ["sh", "-c", "cd /abas/erp && eval $$(sh denv.sh) && datmeta -s && /abas/bin/starteVersion.sh run" ]
-      
-      # nexus for publishing abas Essentials libraries
-    nexus:
-      image: sonatype/nexus:oss
-      container_name: "nexus"
-      ports:
-      - "8081:8081"
