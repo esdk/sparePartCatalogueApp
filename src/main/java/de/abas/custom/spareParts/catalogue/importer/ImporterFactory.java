@@ -7,7 +7,7 @@ import de.abas.erp.db.schema.userenums.UserEnumSpareImportFileFormat;
 public class ImporterFactory {
 
 	public static Importer newInstance(UserEnumSpareImportFileFormat format) throws EventException {
-		if (format.equals(UserEnumSpareImportFileFormat.SPARE_CSV)) {
+		if (format.equals(UserEnumSpareImportFileFormat.CSV)) {
 			return new CSVImporter();
 		}
 

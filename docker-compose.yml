@@ -5,7 +5,7 @@ services:
     # Accessing container via ssh: docker exec -u erp -it erp bash
     #
     erp:
-      image: sdp.registry.abas.sh/abas/test:${ERP_VERSION:-2018r4n14p19}
+      image: sdp.registry.abas.sh/abas/test:${ERP_VERSION:-2018r4n14p61}
       init: true
       container_name: "erp"
 

@@ -12,7 +12,7 @@
     {
       "dbnr" : 12,
       "grnr" : 26,
-      "identifier" : "vgrtxt14",
+      "identifiers" : [ "vgrtxt14" ],
       "standard" : true,
       "headfields" : [ "id", "vgrtxt14" ],
       "tablefields" : []
@@ -21,7 +21,7 @@
       "dbnr" : 65,
       "grnr" : 1,
       "standard" : true,
-      "identifier" : "classname",
+      "identifiers" : [ "classname" ],
       "headfields" : [ "id", "classname" ],
       "tablefields" : []
     }

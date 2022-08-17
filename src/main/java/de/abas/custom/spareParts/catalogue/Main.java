@@ -34,14 +34,14 @@ public class Main {
 	@FieldEventHandler(field = "file", type = FieldEventType.EXIT)
 	public void fileExit(ReplacementCatalogue infosys) {
 		final String[] file = infosys.getFile().split("\\.");
-		infosys.setFormat("csv".equals(file[file.length - 1].toLowerCase()) ? UserEnumSpareImportFileFormat.SPARE_CSV : UserEnumSpareImportFileFormat.Undefined);
+		infosys.setFormat("csv".equals(file[file.length - 1].toLowerCase()) ? UserEnumSpareImportFileFormat.CSV : UserEnumSpareImportFileFormat.Undefined);
 
 	}
 
 	@ScreenEventHandler(type = ScreenEventType.ENTER)
 	public void screenEnter(ReplacementCatalogue infosys) {
 		infosys.table().clear();
-		infosys.setFormat(UserEnumSpareImportFileFormat.SPARE_CSV);
+		infosys.setFormat(UserEnumSpareImportFileFormat.CSV);
 	}
 
 	@ButtonEventHandler(field = "start", type = ButtonEventType.AFTER)
