@@ -30,9 +30,9 @@ repositories {
             includeGroup('de.abas.clientdir')
         }
     }
-        maven { 
-            url "https://registry.abas.sh/artifactory/abas.maven-public/" 
-        }
+    maven { 
+        url "https://registry.abas.sh/artifactory/abas.maven-public/" 
+    }
 }
 
 esdk {
