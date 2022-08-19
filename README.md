@@ -23,7 +23,7 @@ To create the common development setup for eclipse run
 ```
 
 ## Installation
-To install the project make sure you are running the docker-compose.yml file or else change the gradle.properties file accordingly to use another erp client (you will still need a nexus server, but it can of course also be installed in your erp installation or elsewhere as long as it is configured in the gradle.properties file).
+To install the project make sure you are running the docker-compose.yml file or else change the gradle.properties file accordingly to use another erp client.
 
 To use the project's docker-compose.yml file, in the project's root directory run:
 ```shell
@@ -36,7 +36,7 @@ Once it's up, initialize the gradle.properties with the appropriate values by ru
 ./initGradleProperties.sh
 ```
 
-Now, you need to load all the $HOMEDIR/java/lib dependencies into the Nexus Server. This is only necessary once as long as the essentials_nexus container is not reinitialized. Run the following gradle command to upload the dependencies to the Nexus Server:
+Now, you need to load all the $HOMEDIR/java/lib dependencies into the local repository:
 ```shell
 ./gradlew publishHomeDirJars
 ```
@@ -46,7 +46,7 @@ Now you can install the project as follows:
 ./gradlew fullInstall
 ```
 ## Development
-If you want to make changes to the project before installing you still need to run the docker-compose.yml file or at least have a Nexus Server set up to work with.
+If you want to make changes to the project before installing you still need to run the docker-compose.yml file.
 
 Then run
 ```shell
@@ -58,6 +58,6 @@ You also need to run
 ./gradlew publishClientDirJars
 ./gradlew eclipse
 ```
-to upload the $MANDANTDIR/java/lib dependencies to the Nexus Server and set eclipse up to work with the uploaded dependencies.
+to upload the $MANDANTDIR/java/lib dependencies to the local repository and set eclipse up to work with the uploaded dependencies.
 
-After that the code should compile both with gradle and in eclipse and you are set up to work on the code or resource files as you want.
+After that the code should compile both with gradle and in eclipse, and you are set up to work on the code or resource files as you want.
