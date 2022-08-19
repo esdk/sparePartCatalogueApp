@@ -35,46 +35,6 @@ repositories {
     }
 }
 
-esdk {
-	app {
-		name = "sparePartsCatalogueApp"
-		vendorId = "ag"
-		appId = "spare"
-		shared = false
-		infosystems = ["IS.OW1.REPLACEMENTCATALOGUE"]
-		tables = ["Replacement"]
-		enums = ["FILE_FORMAT"]
-		essentialsVersions = ["2017r1-2017r4", "2018r1-2018r9", "2019r1-2900r9"]
-		preconditions = ["workDirs=ow1"]
-		data = ["data.json"]
-		workdirs = [ "ow1" ]
-		languages = "DEA"
-	}
-
-	abas {
-		homeDir = ABAS_HOMEDIR
-		clientDir = ABAS_CLIENTDIR
-		clientId = ABAS_CLIENTID
-		edpHost = EDP_HOST
-		edpPort = EDP_PORT.toInteger()
-		edpUser = EDP_USER
-		edpPassword = EDP_PASSWORD
-	}
-
-	nexus {
-		nexusVersion = NEXUS_VERSION
-	}
-
-	ssh {
-		host = SSH_HOST
-		port = SSH_PORT.toInteger()
-		user = SSH_USER
-		password = SSH_PASSWORD
-		key = SSH_KEY
-	}
-	installType = "SSH"
-}
-
 gradle.taskGraph.whenReady {
 	esdkAppDocumentation {
 		attributes 'productVersion': version.split("-")[0]
@@ -123,7 +83,24 @@ publishing {
 	}
 }
 
+// Always generate code for Java 8
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
 dependencies {
+    constraints {
+        implementation("org.apache.logging.log4j:log4j-core") {
+            version {
+                strictly("[2.17, 3[")
+                prefer("2.17.1")
+            }
+            because("CVE-2021-44228, CVE-2021-45046, CVE-2021-45105: " +
+                    "Log4j vulnerable to remote code execution and other critical security vulnerabilities")
+        }
+    }
 	provided 'de.abas.homedir:log4j:1.0.0'
 	provided "de.abas.homedir:abas-db-base:1.0.0"
 	provided 'de.abas.homedir:jedp:1.0.0'
