@@ -1,10 +1,9 @@
-plugins {
-	id "com.gradle.enterprise" version "3.3.4"
-}
-
-gradleEnterprise {
-	buildScan {
-		termsOfServiceUrl = "https://gradle.com/terms-of-service"
-		termsOfServiceAgree = "yes"
-	}
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+//        mavenLocal()
+        maven {
+            url = uri("https://artifactory.abas.sh/artifactory/abas.maven-public/")
+        }
+    }
 }

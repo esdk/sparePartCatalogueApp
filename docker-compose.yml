@@ -5,9 +5,7 @@ services:
     # Accessing container via ssh: docker exec -u erp -it erp bash
     #
     erp:
-      build:
-        context: .
-        dockerfile: Dockerfile-erp-overrides
+      image: sdp.registry.abas.sh/abas/test:${ERP_VERSION:-2019r4n20p29}
       init: true
       container_name: "erp"
 
@@ -16,7 +14,7 @@ services:
       - "${MINI_GUI_PORT:-8001}:80"
       - "${EDP_TEST_PORT:-6560}:6550"
       - "${GUI_TEST_PORT:-48592}:48392"
-      - "9014:9014"
+      #- "9014:9014"
 
       environment:
       - ABAS_HOST=${ABAS_HOST}
@@ -26,10 +24,3 @@ services:
       user: s3
       hostname: dockerbau
       command: ["sh", "-c", "cd /abas/erp && eval $$(sh denv.sh) && datmeta -s && /abas/bin/starteVersion.sh run" ]
-
-    # nexus for publishing abas Essentials libraries
-    nexus:
-      image: sonatype/nexus:oss
-      container_name: "nexus"
-      ports:
-      - "8081:8081"

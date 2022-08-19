@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ABASData>
-    <RecordSet tableNumber="12:26" tableName="Firma:Vartab" identifier="vgrtxt14" standard="true" importOnce="false" importMode="normal">
+    <RecordSet tableNumber="12:26" tableName="Firma:Vartab" identifiers="vgrtxt1" standard="true" importOnce="false" importMode="normal">
         <Record id="(250,12,0)">
             <Head>
                 <Field name="id" abasType="ID12">(250,12,0)</Field>
-                <Field name="vgrtxt14" abasType="GL40">SparePart</Field>
+                <Field name="vgrtxt1" abasType="GL40">SparePart</Field>
             </Head>
         </Record>
     </RecordSet>
-    <RecordSet tableNumber="87:9" tableName="Datenexport:Aufrufparameter" identifier="guid" standard="false" importOnce="false" importMode="normal">
+    <RecordSet tableNumber="87:9" tableName="Datenexport:Aufrufparameter" identifiers="guid" standard="false" importOnce="false" importMode="normal">
         <Record id="(33288,87,0)">
             <Head>
                 <Field name="id" abasType="ID87">(33288,87,0)</Field>
@@ -27,7 +27,7 @@
             </Row>
         </Record>
     </RecordSet>
-    <RecordSet tableNumber="65:1" tableName="Infosystem:Infosystem" identifier="classname" standard="true" importOnce="false" importMode="normal">
+    <RecordSet tableNumber="65:1" tableName="Infosystem:Infosystem" identifiers="classname" standard="true" importOnce="false" importMode="normal">
         <Record id="(631,65,0)">
             <Head>
                 <Field name="id" abasType="ID65">(631,65,0)</Field>

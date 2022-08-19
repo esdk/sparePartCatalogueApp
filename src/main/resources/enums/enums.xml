@@ -32,6 +32,7 @@
             <Row number="1">
                 <Field name="zid" abasType="IDZ107:1">(248,107,0,1)</Field>
                 <Field name="vaufzelem" abasType="VID88">(963,109,0)</Field>
+                <Field name="aebezeichner" abasType="GL40">CSV</Field>
             </Row>
         </Record>
     </RecordSet>
